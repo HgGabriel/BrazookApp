@@ -1,10 +1,11 @@
 package br.com.example.brazookatelas
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Book
@@ -28,7 +29,6 @@ import br.com.example.brazookatelas.ui.screens.LivrosScreen
 import br.com.example.brazookatelas.ui.theme.BrazookaTelasTheme
 
 class MainActivity : ComponentActivity() {
-    @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     @ExperimentalMaterialApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,8 +56,10 @@ class MainActivity : ComponentActivity() {
                             }
                         )
                     }
-                ) {
+                ) {paddingValues ->
+                    Box(modifier = Modifier.padding(paddingValues)){
                     Navigation(navController = navController)
+                    }
                 }
             }
         }

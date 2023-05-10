@@ -153,7 +153,8 @@ fun FilmeItemPager(
                 overflow = TextOverflow.Ellipsis,
                 style = MaterialTheme.typography.subtitle1,
                 textAlign = TextAlign.Center,
-                maxLines = 1
+                maxLines = 1,
+
             )
         }
     }
