@@ -191,7 +191,7 @@ val sampleLivros = listOf(
 )
 
 val sampleSectionsLivros = mapOf(
-    "Promoções" to sampleLivros,
-    "Doces" to sampleLivros,
-    "Bebidas" to sampleLivros
+    "Em alta" to sampleLivros,
+    "Recomendados" to sampleLivros,
+    "Outros" to sampleLivros
 )

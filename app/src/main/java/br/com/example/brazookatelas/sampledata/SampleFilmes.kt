@@ -91,7 +91,7 @@ val sampleFilmes = listOf(
 )
 
 val sampleSectionsFilmes = mapOf(
-    "Promoções" to sampleFilmes,
-    "Doces" to sampleFilmes,
-    "Bebidas" to sampleFilmes
+    "Em alta" to sampleFilmes,
+    "Recomendados" to sampleFilmes,
+    "Outros" to sampleFilmes
 )
