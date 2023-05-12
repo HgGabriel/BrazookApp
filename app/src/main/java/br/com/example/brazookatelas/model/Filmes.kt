@@ -9,6 +9,6 @@ data class Filmes(
     val roteiristas: String,
     val diretores: String,
     val nota: Double,
-    val poster: String? = null,
+    val poster: String,
     val ano: Int
 )

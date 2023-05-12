@@ -26,6 +26,7 @@ import androidx.compose.ui.unit.sp
 import br.com.example.brazookatelas.ui.theme.BrazookaTelasTheme
 import br.com.example.brazookatelas.R
 import br.com.example.brazookatelas.model.Filmes
+import br.com.example.brazookatelas.sampledata.sampleFilmes
 import coil.compose.AsyncImage
 import kotlin.math.ceil
 import kotlin.math.floor
@@ -282,18 +283,7 @@ fun RatingPreviewDisabled() {
 @Composable
 fun FilmeCardItemPreview() {
     FilmeCardItem(
-        Filmes(
-            filme = "Teste",
-            sinopse = LoremIpsum(50).values.first(),
-            genero = "TesteGenero",
-            classificacao = "18",
-            atores = "Wagner Moura",
-            roteiristas = "Caco Bacelos, Sei la que mais",
-            diretores = "Diretor1, Diretor2",
-            nota = 9.0,
-            poster = null,
-            ano = 2023
-        )
+        sampleFilmes[1]
     )
 }
 
@@ -301,18 +291,7 @@ fun FilmeCardItemPreview() {
 @Composable
 fun FilmeItemPagerPreview() {
     FilmeItemPager(
-        Filmes(
-            filme = "Teste",
-            sinopse = LoremIpsum(50).values.first(),
-            genero = "TesteGenero",
-            classificacao = "18",
-            atores = "Wagner Moura",
-            roteiristas = "Caco Bacelos, Sei la que mais",
-            diretores = "Diretor1, Diretor2",
-            nota = 10.0,
-            poster = null,
-            ano = 2023
-        )
+        sampleFilmes[1]
     )
 }
 
@@ -320,18 +299,7 @@ fun FilmeItemPagerPreview() {
 @Composable
 fun FilmeItemRowPreview() {
     FilmeItemRow(
-        Filmes(
-            filme = "Teste",
-            sinopse = LoremIpsum(50).values.first(),
-            genero = "TesteGenero",
-            classificacao = "18",
-            atores = "Wagner Moura",
-            roteiristas = "Caco Bacelos, Sei la que mais",
-            diretores = "Diretor1, Diretor2",
-            nota = 10.0,
-            poster = null,
-            ano = 2023
-        )
+        sampleFilmes[1]
     )
 }
 
@@ -341,18 +309,7 @@ fun FilmeItemGridPreview() {
     BrazookaTelasTheme {
         Surface {
             FilmeItemGrid(
-                Filmes(
-                    filme = "Teste",
-                    sinopse = LoremIpsum(50).values.first(),
-                    genero = "TesteGenero",
-                    classificacao = "18",
-                    atores = "Wagner Moura",
-                    roteiristas = "Caco Bacelos, Sei la que mais",
-                    diretores = "Diretor1, Diretor2",
-                    nota = 10.0,
-                    poster = null,
-                    ano = 2023
-                )
+              sampleFilmes[1]
             )
         }
     }

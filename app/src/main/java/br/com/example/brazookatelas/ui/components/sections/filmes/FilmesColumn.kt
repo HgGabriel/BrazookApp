@@ -14,6 +14,7 @@ import br.com.example.brazookatelas.ui.components.CategoriesFilmes
 import br.com.example.brazookatelas.ui.components.SearchTextField
 import br.com.example.brazookatelas.ui.components.items.FilmeCardItem
 import br.com.example.brazookatelas.ui.components.sections.row.FilmeRowTrend
+import br.com.example.brazookatelas.ui.components.sections.row.FilmeRowTrendPager
 import br.com.example.brazookatelas.ui.components.sections.row.FilmesRowRecom
 
 @Composable
@@ -83,6 +84,7 @@ fun FilmesTelaColumn() {
             filmes.nota
         })
         Spacer(Modifier.height(16.dp))
+        FilmeRowTrendPager(title = "Pager", filmes = sampleFilmes)
     }
 }
 
