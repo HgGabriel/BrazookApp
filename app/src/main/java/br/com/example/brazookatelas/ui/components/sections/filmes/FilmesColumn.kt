@@ -2,21 +2,34 @@ package br.com.example.brazookatelas.ui.components.sections.filmes
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Text
+import androidx.compose.material.TextButton
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import br.com.example.brazookatelas.model.Filmes
 import br.com.example.brazookatelas.sampledata.sampleFilmes
 import br.com.example.brazookatelas.sampledata.sampleSectionsFilmes
 import br.com.example.brazookatelas.ui.components.CategoriesFilmes
 import br.com.example.brazookatelas.ui.components.SearchTextField
 import br.com.example.brazookatelas.ui.components.items.FilmeCardItem
+import br.com.example.brazookatelas.ui.components.items.FilmeItemGrid
+import br.com.example.brazookatelas.ui.components.sections.grid.FilmesGrid
 import br.com.example.brazookatelas.ui.components.sections.row.FilmeRowTrend
 import br.com.example.brazookatelas.ui.components.sections.row.FilmeRowTrendPager
 import br.com.example.brazookatelas.ui.components.sections.row.FilmesRowRecom
 
+val outrosFilmes = sampleFilmes.sortedBy { filme ->
+    filme.filme
+}.take(9)
+
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun FilmesColumnRes(
     sections: Map<String, List<Filmes>>,
@@ -51,11 +64,35 @@ fun FilmesColumnRes(
                 .fillMaxSize(),
             verticalArrangement = Arrangement.spacedBy(16.dp),
             contentPadding = PaddingValues(bottom = 16.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             if (text.isBlank()) {
                 item {
                     FilmesTelaColumn()
                 }
+
+                item {
+                    Text(text = "Outros", style = MaterialTheme.typography.h6)
+                }
+
+                item {
+                    FlowRow(
+                        maxItemsInEachRow = 2,
+                        horizontalArrangement = Arrangement.SpaceEvenly,
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        repeat(10) {
+                            FilmeItemGrid(filme = sampleFilmes[it])
+                        }
+                    }
+                }
+
+                item {
+                    TextButton(onClick = { }) {
+                        Text(text = "Ver mais", fontSize = 20.sp)
+                    }
+                }
+
             } else {
                 items(searchedMovie) { f5 ->
                     FilmeCardItem(
@@ -63,7 +100,6 @@ fun FilmesColumnRes(
                         Modifier.padding(horizontal = 16.dp),
                     )
                 }
-
 
             }
         }
@@ -74,17 +110,16 @@ fun FilmesColumnRes(
 @Composable
 fun FilmesTelaColumn() {
     Column {
-        FilmeRowTrend(title = "Em alta", filmes = sampleFilmes.sortedByDescending { filmes ->
+        FilmeRowTrendPager(title = "Em alta", filmes = sampleFilmes.sortedByDescending { filmes ->
             filmes.ano
         }.take(5))
         Spacer(Modifier.height(16.dp))
         CategoriesFilmes()
         Spacer(Modifier.height(16.dp))
-        FilmesRowRecom(title = "Recomendações", filmes = sampleFilmes.sortedByDescending {filmes->
+        FilmesRowRecom(title = "Recomendações", filmes = sampleFilmes.sortedByDescending { filmes ->
             filmes.nota
         })
         Spacer(Modifier.height(16.dp))
-        FilmeRowTrendPager(title = "Pager", filmes = sampleFilmes)
     }
 }
 

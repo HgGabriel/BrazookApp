@@ -90,7 +90,7 @@ val sampleJogos = listOf(
         sinopse = "Aventure-se no mundo do Herói em pixel art no qual as ações do jogador são cantadas de forma cômica e dinâmica, nesse jogo de plataforma e muita aventura!",
         ano = 2020,
         plataformas = "PC",
-        capa = "https://alendadoheroi.com.br/images/jogo-capa-03.png",
+        capa = "https://bdjogos.com.br/capas/8551-a-lenda-do-heroi-pc-capa-1.jpg",
     ),
 
     Jogos(
@@ -222,7 +222,7 @@ val sampleJogos = listOf(
         sinopse = "Com estética retrô em pixel art, ENEFN é um jogo de exploração com elementos de survival horror, que coloca o jogador como um aluno que ficou preso em uma versão assombrada de sua escola.",
         ano = 2020,
         plataformas = "PC, Android",
-        capa = "https://img.youtube.com/vi/FcK01HpIZEs/0.jpg",
+        capa = "https://play-lh.googleusercontent.com/pzeJq-yThpmTVDtr6YmNcWbpu69X-XDEDVXYUzcYfoYc3dTjYkpK94SbzwK2mOCF-Ek",
     ),
 
 //    Jogos(

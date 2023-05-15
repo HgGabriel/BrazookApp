@@ -1,15 +1,11 @@
 package br.com.example.brazookatelas
 
+import JogosRowTrend
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Book
-import androidx.compose.material.icons.filled.Movie
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -22,8 +18,10 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
-import androidx.navigation.compose.rememberNavController
 import br.com.example.brazookatelas.model.BottomNavItem
+import br.com.example.brazookatelas.sampledata.sampleJogos
+import br.com.example.brazookatelas.ui.components.items.JogoItemRecom
+import br.com.example.brazookatelas.ui.components.items.notaJogos
 import br.com.example.brazookatelas.ui.screens.FilmesScreen
 import br.com.example.brazookatelas.ui.screens.LivrosScreen
 import br.com.example.brazookatelas.ui.theme.BrazookaTelasTheme
@@ -34,33 +32,34 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             BrazookaTelasTheme {
-                val navController = rememberNavController()
-                Scaffold(
-                    bottomBar = {
-                        BottomNavigationBar(
-                            items = listOf(
-                                BottomNavItem(
-                                    name = "Filmes",
-                                    route = "filmes",
-                                    icon = Icons.Default.Movie
-                                ),
-                                BottomNavItem(
-                                    name = "Livros",
-                                    route = "livros",
-                                    icon = Icons.Default.Book
-                                ),
-                            ),
-                            navController = navController,
-                            onItemClick = {
-                                navController.navigate(it.route)
-                            }
-                        )
-                    }
-                ) {paddingValues ->
-                    Box(modifier = Modifier.padding(paddingValues)){
-                    Navigation(navController = navController)
-                    }
-                }
+//                val navController = rememberNavController()
+//                Scaffold(
+//                    bottomBar = {
+//                        BottomNavigationBar(
+//                            items = listOf(
+//                                BottomNavItem(
+//                                    name = "Filmes",
+//                                    route = "filmes",
+//                                    icon = Icons.Default.Movie
+//                                ),
+//                                BottomNavItem(
+//                                    name = "Livros",
+//                                    route = "livros",
+//                                    icon = Icons.Default.Book
+//                                ),
+//                            ),
+//                            navController = navController,
+//                            onItemClick = {
+//                                navController.navigate(it.route)
+//                            }
+//                        )
+//                    }
+//                ) {paddingValues ->
+//                    Box(modifier = Modifier.padding(paddingValues)){
+//                    Navigation(navController = navController)
+//                    }
+//                }
+                JogoItemRecom(jogos = sampleJogos[16])
             }
         }
     }

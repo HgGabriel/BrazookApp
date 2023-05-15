@@ -87,6 +87,68 @@ val sampleFilmes = listOf(
         poster = "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/7fNhBXNhqd6AVRHMcVvAF1py4Mh.jpg",
         ano = 2016
     ),
+    Filmes(
+        filme = "Central do Brasil",
+        sinopse = "Dora escreve cartas para analfabetos na estação Central do Brasil. Uma das clientes de Dora é Ana, que vem escrever uma carta com o seu filho, Josué, um garoto de nove anos, que sonha encontrar o pai que nunca conheceu. Na saída da estação, Ana é atropelada e Josué fica abandonado. Mesmo a contragosto, Dora acaba acolhendo o menino e envolvendo-se com ele. Termina por levar Josué para o interior do Nordeste, à procura do pai. À medida em que vão entrando país adentro, esses dois personagens, tão diferentes, vão se aproximando... Começa então uma viagem fascinate ao coração do Brasil, à procura do pai desaparecido, e uma viagem profundamente emotiva ao coração de cada um dos personagens do filme.",
+        genero = "Drama",
+        classificacao = "L",
+        atores = "Fernanda Montenegro, Vinícius de Oliveira, Marília Pêra, Othon Bastos",
+        roteiristas = "Marcos Bernstein",
+        diretores = "João Emanuel Carneiro",
+        nota = 8.1,
+        poster = "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/20gvOww3EDFaDZyNowVGAHtXo0H.jpg",
+        ano = 1998
+    ),
+    Filmes(
+        filme = "Cidade de Deus",
+        sinopse = "Buscapé é um jovem morador da Cidade de Deus que cresce em meio à violência. Com medo de se tornar um bandido, enxerga na fotografia uma oportunidade de ter uma vida digna.",
+        genero = "Drama/Crime",
+        classificacao = "18",
+        atores = "Alexandre Rodrigues, Leandro Firmino, Douglas Silva, Matheus Nachtergaele",
+        roteiristas = "Paulo Lins, Bráulio Mantovani",
+        diretores = "Fernando Meirelles, Kátia Lund",
+        nota = 8.6,
+        poster = "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/gfnXixcGC060QcG6JPxN6AMdVsq.jpg",
+        ano = 2002
+    ),
+    Filmes(
+        filme = "Depois do Universo",
+        sinopse = "A trama acompanha Nina, uma pianista que precisa superar os desafios de lidar com o lúpus. Ela conhece Gabriel, um médico com quem descobre uma forte conexão.",
+        genero = "Romance/Drama",
+        classificacao = "12",
+        atores = "Henry Zaga, Giulia Be, João Miguel",
+        roteiristas = "Rodrigo Azevedo, João Côrtes",
+        diretores = "Diego Freitas",
+        nota = 8.3,
+        poster = "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/u7zxuLzFH1IKDCcnIrdytu7Dcy6.jpg",
+        ano = 2022
+    ),
+    Filmes(
+        filme = "Pelé",
+        sinopse = "Documentário que retrata a vida de Pelé, da busca pela perfeição à condição de mito. Abrangendo um extraordinário período de 12 anos, a produção mostra como o único jogador a vencer três Copas do Mundo passou de astro do futebol em 1958 a herói nacional em 1970, uma época radical e turbulenta no Brasil.",
+        genero = "Documentário",
+        classificacao = "10",
+        atores = "Pelé, Zagallo, Gilberto Gil",
+        roteiristas = "Ben Nicholas, David Tryhorn",
+        diretores = "Ben Nicholas, David Tryhorn",
+        nota = 7.0,
+        poster = "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/cVKAep8V6rrFh0IhABC0bkzjwK5.jpg",
+        ano = 2021
+    ),
+
+//    Filmes(
+//        filme = "Terapia do Medo",
+//        sinopse = "Clara e Fernanda são irmãs gêmeas, idênticas e muito unidas, porém em decorrência de um acidente, Clara entra em estado catatônico. Fernanda está determinada a encontrar a cura para irmã, mas os métodos tradicionais parecem não funcionar. Ao entrar em contato com um método alternativo de terapia, Clara acessa um universo sobrenatural, trazendo para o presente uma sombria e trágica história com segredos do passado. Para salvar a irmã de uma forte presença maligna, Fernanda vai precisar ultrapassar a dimensão do medo e o limite entre a vida e a morte.",
+//        genero = "Mistérios, Terror, Thriller",
+//        classificacao = "16",
+//        atores = "Cleo Pires, Sérgio Guizé, Alessandra Cabral",
+//        roteiristas = "",
+//        diretores = "",
+//        nota =,
+//        poster = "",
+//        ano =
+//    ),
+
 
 )
 

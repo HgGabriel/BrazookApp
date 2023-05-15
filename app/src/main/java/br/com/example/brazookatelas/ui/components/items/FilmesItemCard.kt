@@ -31,35 +31,39 @@ import coil.compose.AsyncImage
 import kotlin.math.ceil
 import kotlin.math.floor
 
+val imageH = 260.dp
+val imageW = 180.dp
+
+val containerH = 270.dp
+val containerW = 190.dp
+
 @Composable
 fun FilmeItemGrid(
     filme: Filmes,
     modifier: Modifier = Modifier,
 ) {
-    val imageH = 260.dp
-    val imageW = 180.dp
-
-    val containerH = 270.dp
-    val containerW = 190.dp
 
     Card(
         modifier = Modifier
             .width(containerW)
-            .height(290.dp),
-        elevation = 10.dp,
+            .height(300.dp)
+            .padding(4.dp),
+        elevation = 4.dp,
         shape = RoundedCornerShape(8.dp),
         backgroundColor = MaterialTheme.colors.background
     ) {
         Column(
             Modifier
                 .height(containerH)
-                .width(containerW), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.SpaceBetween
+                .width(containerW),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.SpaceBetween
         ) {
             Surface(
                 shape = RoundedCornerShape(6.dp),
                 modifier = Modifier
                     .wrapContentSize()
-                    .padding(top = 6.dp,start = 6.dp,end = 6.dp)
+                    .padding(top = 6.dp, start = 6.dp, end = 6.dp)
             ) {
                 AsyncImage(
                     model = filme.poster,
@@ -97,10 +101,9 @@ fun FilmeItemRow(
     filme: Filmes,
     modifier: Modifier = Modifier,
 ) {
-
     Box(modifier = Modifier
-        .padding(end = 24.dp)
-        .clickable { }) {
+        .clickable { }
+        .width(140.dp)) {
         Column(
             modifier = Modifier.wrapContentHeight(),
             horizontalAlignment = Alignment.CenterHorizontally
@@ -120,6 +123,25 @@ fun FilmeItemRow(
             )
             Spacer(modifier = Modifier.height(8.dp))
         }
+    }
+}
+
+@Composable
+fun FilmeItemMore(filme: Filmes) {
+    Card(
+        modifier = Modifier
+            .height(imageH)
+            .width(imageW),
+        elevation = 4.dp,
+        shape = RoundedCornerShape(4.dp),
+    ) {
+        AsyncImage(
+            model = filme.poster,
+            contentDescription = "Capa do filme",
+            placeholder = painterResource(id = R.drawable.mundoluna),
+            modifier = Modifier.size(width = 140.dp, height = 220.dp),
+            contentScale = ContentScale.Crop
+        )
     }
 }
 
@@ -156,7 +178,7 @@ fun FilmeItemPager(
                 textAlign = TextAlign.Center,
                 maxLines = 1,
 
-            )
+                )
         }
     }
 }
@@ -201,7 +223,7 @@ fun FilmeCardItem(
                     color = MaterialTheme.colors.onBackground
                 )
 
-                Row (verticalAlignment = Alignment.CenterVertically){
+                Row(verticalAlignment = Alignment.CenterVertically) {
                     val notaFilmes = filme.nota / 2
                     Text(
                         modifier = Modifier.padding(end = 4.dp),
@@ -230,7 +252,11 @@ fun RatingBar(
     val halfStar = !(rating.rem(1).equals(0.0))
     Row(modifier = modifier) {
         repeat(filledStars) {
-            Icon(imageVector = Icons.Outlined.Star, contentDescription = null, tint = MaterialTheme.colors.primary)
+            Icon(
+                imageVector = Icons.Outlined.Star,
+                contentDescription = null,
+                tint = MaterialTheme.colors.primary
+            )
         }
         if (halfStar) {
             Icon(
@@ -279,6 +305,12 @@ fun RatingPreviewDisabled() {
     RatingBar(rating = 0.0, starsColor = Color.Gray)
 }
 
+@Preview(showBackground = true)
+@Composable
+fun FilmeItemMorePreview() {
+    FilmeItemMore(sampleFilmes[1])
+}
+
 @Preview
 @Composable
 fun FilmeCardItemPreview() {
@@ -309,7 +341,7 @@ fun FilmeItemGridPreview() {
     BrazookaTelasTheme {
         Surface {
             FilmeItemGrid(
-              sampleFilmes[1]
+                sampleFilmes[1]
             )
         }
     }

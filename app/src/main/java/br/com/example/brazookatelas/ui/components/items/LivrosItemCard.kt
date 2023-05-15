@@ -221,8 +221,7 @@ fun LivroItemList(
                 )
                 Spacer(modifier = Modifier.height(4.dp))
                 Row(verticalAlignment = Alignment.CenterVertically) {
-                    val notaLivros =
-                        BigDecimal((3..5).random()).setScale(2).toDouble()
+                    val notaLivros = BigDecimal((3..5).random()).setScale(2).toDouble()
                     Text(text = notaLivros.toString(), fontStyle = FontStyle.Italic)
                     RatingBar(rating = notaLivros)
                 }

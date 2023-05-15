@@ -36,7 +36,7 @@ fun CategoriesFilmes() {
         Text(
             text = "Categorias",
             style = MaterialTheme.typography.h6,
-            modifier = Modifier.padding(start = 16.dp)
+            modifier = Modifier.padding(start = 16.dp, bottom = 16.dp)
         )
 
         Row(
