@@ -1,6 +1,5 @@
 package br.com.example.brazookatelas
 
-import JogosRowTrend
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -19,10 +18,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import br.com.example.brazookatelas.model.BottomNavItem
-import br.com.example.brazookatelas.sampledata.sampleJogos
-import br.com.example.brazookatelas.ui.components.items.JogoItemRecom
-import br.com.example.brazookatelas.ui.components.items.notaJogos
+import br.com.example.brazookatelas.sampledata.sampleSeries
+import br.com.example.brazookatelas.ui.components.sections.Series.SeriesGrid
 import br.com.example.brazookatelas.ui.screens.FilmesScreen
+import br.com.example.brazookatelas.ui.screens.JogosScreen
 import br.com.example.brazookatelas.ui.screens.LivrosScreen
 import br.com.example.brazookatelas.ui.theme.BrazookaTelasTheme
 
@@ -47,6 +46,11 @@ class MainActivity : ComponentActivity() {
 //                                    route = "livros",
 //                                    icon = Icons.Default.Book
 //                                ),
+//                                BottomNavItem(
+//                                    name = "Jogos",
+//                                    route = "jogos",
+//                                    icon = Icons.Default.VideogameAsset
+//                                ),
 //                            ),
 //                            navController = navController,
 //                            onItemClick = {
@@ -59,64 +63,68 @@ class MainActivity : ComponentActivity() {
 //                    Navigation(navController = navController)
 //                    }
 //                }
-                JogoItemRecom(jogos = sampleJogos[16])
+//            }
+                SeriesGrid(title = "Outros", series = sampleSeries)
+            }
+        }
+
+    }
+
+    @Composable
+    fun Navigation(navController: NavHostController) {
+        NavHost(navController = navController, startDestination = "filmes") {
+            composable("filmes") {
+                FilmesScreen()
+            }
+            composable("livros") {
+                LivrosScreen()
+            }
+            composable("jogos") {
+                JogosScreen()
             }
         }
     }
 
-}
-
-@Composable
-fun Navigation(navController: NavHostController) {
-    NavHost(navController = navController, startDestination = "filmes") {
-        composable("filmes") {
-            FilmesScreen()
-        }
-        composable("livros") {
-            LivrosScreen()
-        }
-    }
-}
-
-@ExperimentalMaterialApi
-@Composable
-fun BottomNavigationBar(
-    items: List<BottomNavItem>,
-    navController: NavController,
-    modifier: Modifier = Modifier,
-    onItemClick: (BottomNavItem) -> Unit,
-) {
-    val backStackEntry = navController.currentBackStackEntryAsState()
-    BottomNavigation(
-        modifier = modifier,
-        backgroundColor = MaterialTheme.colors.surface,
-        elevation = 5.dp
+    @ExperimentalMaterialApi
+    @Composable
+    fun BottomNavigationBar(
+        items: List<BottomNavItem>,
+        navController: NavController,
+        modifier: Modifier = Modifier,
+        onItemClick: (BottomNavItem) -> Unit,
     ) {
-        items.forEach { item ->
-            val selected = item.route == backStackEntry.value?.destination?.route
-            BottomNavigationItem(
-                selected = selected,
-                onClick = { onItemClick(item) },
-                selectedContentColor = MaterialTheme.colors.onSurface,
-                unselectedContentColor = Color.Gray,
-                icon = {
-                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        val backStackEntry = navController.currentBackStackEntryAsState()
+        BottomNavigation(
+            modifier = modifier,
+            backgroundColor = MaterialTheme.colors.surface,
+            elevation = 5.dp
+        ) {
+            items.forEach { item ->
+                val selected = item.route == backStackEntry.value?.destination?.route
+                BottomNavigationItem(
+                    selected = selected,
+                    onClick = { onItemClick(item) },
+                    selectedContentColor = MaterialTheme.colors.onSurface,
+                    unselectedContentColor = Color.Gray,
+                    icon = {
+                        Column(horizontalAlignment = Alignment.CenterHorizontally) {
 
-                        Icon(
-                            imageVector = item.icon,
-                            contentDescription = item.name
-                        )
-
-                        if (selected) {
-                            Text(
-                                text = item.name,
-                                textAlign = TextAlign.Center,
-                                fontSize = 10.sp
+                            Icon(
+                                imageVector = item.icon,
+                                contentDescription = item.name
                             )
+
+                            if (selected) {
+                                Text(
+                                    text = item.name,
+                                    textAlign = TextAlign.Center,
+                                    fontSize = 10.sp
+                                )
+                            }
                         }
                     }
-                }
-            )
+                )
+            }
         }
     }
 }

@@ -2,7 +2,6 @@ package br.com.example.brazookatelas.ui.components.sections.filmes
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -20,8 +19,6 @@ import br.com.example.brazookatelas.ui.components.CategoriesFilmes
 import br.com.example.brazookatelas.ui.components.SearchTextField
 import br.com.example.brazookatelas.ui.components.items.FilmeCardItem
 import br.com.example.brazookatelas.ui.components.items.FilmeItemGrid
-import br.com.example.brazookatelas.ui.components.sections.grid.FilmesGrid
-import br.com.example.brazookatelas.ui.components.sections.row.FilmeRowTrend
 import br.com.example.brazookatelas.ui.components.sections.row.FilmeRowTrendPager
 import br.com.example.brazookatelas.ui.components.sections.row.FilmesRowRecom
 

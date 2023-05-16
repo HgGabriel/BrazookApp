@@ -19,7 +19,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
@@ -32,8 +31,6 @@ import br.com.example.brazookatelas.sampledata.sampleFilmes
 import br.com.example.brazookatelas.ui.components.items.FilmeItemPager
 import br.com.example.brazookatelas.ui.components.items.FilmeItemRow
 import coil.compose.AsyncImage
-import coil.request.ImageRequest
-import com.google.accompanist.pager.ExperimentalPagerApi
 import kotlinx.coroutines.launch
 import kotlin.math.absoluteValue
 

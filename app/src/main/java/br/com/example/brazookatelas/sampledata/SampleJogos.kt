@@ -12,7 +12,7 @@ val sampleJogos = listOf(
         estudio = "QUByte Interactive Ltda.",
         sinopse = "\"99Vidas - O Jogo\" traz de volta o prazer de jogar games no estilo beat'em up como Final Fight, Double Dragon, Battletoads, Golden Axe e Streets of Rage, remetendo aos estilo retro pixel-art 16bits e trazendo toda a nostalgia desse grande gênero que dominou os arcades e consoles na década de 90.",
         ano = 2016,
-        plataformas = "PC, Nintendo Switch, Playstation 3, Xobox One",
+        plataformas = "PC, Nintendo Switch, Playstation 3, Xbox One",
         capa = "https://cdn.mobygames.com/3ddb508e-ab77-11ed-8d2b-02420a00019e.webp"
     ),
 

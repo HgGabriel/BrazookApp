@@ -20,6 +20,7 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.ColorMatrix
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
@@ -197,7 +198,7 @@ fun JogoItemRecom(jogos: Jogos) {
             elevation = 8.dp,
             shape = RoundedCornerShape(6.dp), modifier = Modifier.size(
                 width = 240.dp,
-                height = 330.dp
+                height = 360.dp
             )
         ) {
             Box {
@@ -209,8 +210,8 @@ fun JogoItemRecom(jogos: Jogos) {
                     modifier = Modifier
                         .fillMaxSize()
                         .blur(
-                            radiusX = 20.dp,
-                            radiusY = 20.dp,
+                            radiusX = 25.dp,
+                            radiusY = 25.dp,
                             edgeTreatment = BlurredEdgeTreatment(RoundedCornerShape(16.dp))
                         ),
                     colorFilter = ColorFilter.colorMatrix(ColorMatrix()
@@ -266,13 +267,16 @@ fun JogoItemRecom(jogos: Jogos) {
                         }
                         Column(
                             horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.SpaceAround,
-                            modifier = Modifier.padding(4.dp).fillMaxSize()
+                            modifier = Modifier
+                                .padding(4.dp)
+                                .fillMaxSize()
                         ) {
-                            Image(
-                                idadeIcon,
-                                contentDescription = null,
-                                Modifier.size(20.dp)
-                            )
+
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+
+                                Text(text = notaJogos.toString(), fontStyle = FontStyle.Italic)
+                                RatingBar(rating = notaJogos)
+                            }
 
                             Text(
                                 text = jogos.genero,
@@ -296,6 +300,85 @@ fun JogoItemRecom(jogos: Jogos) {
             }
         }
     }
+}
+
+@Composable
+fun JogoItemList(jogos: Jogos,) {
+
+    Surface(
+        elevation = 4.dp,
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(140.dp),
+    ) {
+        Row {
+            Surface(
+                shape = RoundedCornerShape(4.dp), elevation = 8.dp, modifier = Modifier
+                    .wrapContentSize()
+                    .padding(top = 12.dp, start = 12.dp, bottom = 12.dp, end = 6.dp)
+                    .align(Alignment.CenterVertically)
+            ) {
+                AsyncImage(
+                    model = jogos.capa,
+                    contentDescription = "Capa do Livro",
+                    placeholder = painterResource(id = R.drawable.fobia),
+                    modifier = Modifier.size(width = 100.dp, height = 100.dp),
+                    contentScale = ContentScale.Crop,
+                )
+            }
+
+            Column(
+                modifier = Modifier
+                    .padding(8.dp)
+                    .fillMaxHeight(), verticalArrangement = Arrangement.Center
+            ) {
+
+                Text(
+                    modifier = Modifier
+                        .fillMaxWidth(),
+                    text = jogos.nome,
+                    style = MaterialTheme.typography.h1,
+                    overflow = TextOverflow.Ellipsis,
+                    maxLines = 2,
+                    fontSize = 20.sp
+                )
+                Text(
+                    modifier = Modifier
+                        .fillMaxWidth(),
+                    text = jogos.estudio,
+                    style = MaterialTheme.typography.subtitle1,
+                    overflow = TextOverflow.Ellipsis,
+                    maxLines = 2,
+                    fontSize = 12.sp,
+                    color = Color.Gray
+                )
+
+                Text(
+                    modifier = Modifier,
+                    text = jogos.genero,
+                    style = MaterialTheme.typography.subtitle1,
+                    overflow = TextOverflow.Ellipsis,
+                    maxLines = 2,
+                    fontSize = 12.sp,
+                    color = MaterialTheme.colors.onBackground
+                )
+                Spacer(modifier = Modifier.height(4.dp))
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Text(text = notaJogos.toString(), fontStyle = FontStyle.Italic)
+                    RatingBar(rating = notaJogos)
+                }
+
+            }
+
+
+        }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun JogoItemOutroPreview() {
+    JogoItemList(sampleJogos[16])
 }
 
 
