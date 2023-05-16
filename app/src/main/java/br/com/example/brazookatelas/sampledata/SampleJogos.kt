@@ -22,7 +22,7 @@ val sampleJogos = listOf(
         classificacao = "12",
         estudio = "Aquiris",
         sinopse = "Horizon Chase Turbo é uma corrida ao redor do mundo. A cada nova copa, você pilotará seu carro por lugares extraordinários, observando o pôr do sol, enfrentando chuva, neve, cinzas vulcânicas e até fortes tempestades de areia. Seja de dia ou de noite cada trilha se passa em lindos cartões postais do mundo todo.",
-                ano = 2018,
+        ano = 2018,
         plataformas = "PC, PS4, Xbox One e Switch",
         capa = "https://cdn.mobygames.com/f236aed6-ab8e-11ed-b042-02420a00019f.webp",
     ),
@@ -137,17 +137,6 @@ val sampleJogos = listOf(
         capa = "https://cdn.mobygames.com/39c869f0-ab7c-11ed-ba50-02420a000199.webp",
     ),
 
-//    Jogos(
-//        nome = "O Sobrenatural",
-//        genero = "Terror",
-//        classificacao = "12",
-//        estudio = "",
-//        sinopse = "",
-//        ano =,
-//        plataformas = "",
-//        capa = "",
-//    ),
-
     Jogos(
         nome = "Damned",
         genero = "Terror",
@@ -222,31 +211,151 @@ val sampleJogos = listOf(
         sinopse = "Com estética retrô em pixel art, ENEFN é um jogo de exploração com elementos de survival horror, que coloca o jogador como um aluno que ficou preso em uma versão assombrada de sua escola.",
         ano = 2020,
         plataformas = "PC, Android",
-        capa = "https://play-lh.googleusercontent.com/pzeJq-yThpmTVDtr6YmNcWbpu69X-XDEDVXYUzcYfoYc3dTjYkpK94SbzwK2mOCF-Ek",
+        capa = "https://img.youtube.com/vi/FcK01HpIZEs/0.jpg",
     ),
 
-//    Jogos(
-//        nome = "D3L3T3.exe",
-//        genero = "Terror",
-//        classificacao = "12",
-//        estudio = "Labbitspace",
-//        sinopse = "Numa corrida contra o tempo, um jovem percorre um cemitério no meio do nada, em busca de algo que possa quebrar uma maldição fatal. Dentre assassinatos e segredos ocultos, apenas a escuridão é uma certeza.
-//        ",
-//                ano = 2021,
-//        plataformas = "PC",
-//        capa = "https://cdn.akamai.steamstatic.com/steamcommunity/public/images/apps/1546950/e56024a822814d8402834d69d199d080b6248290.jpg",
-//    ),
-//
-//    Jogos(
-//        nome = "Devil Inside Us: Roots of Evil",
-//        genero = "Terror",
-//        classificacao = "12",
-//        estudio = "",
-//        sinopse = "",
-//        ano =,
-//        plataformas = "",
-//        capa = "",
-//    ),
+    Jogos(
+        nome = "D3L3T3.exe",
+        genero = "Terror",
+        classificacao = "12",
+        estudio = "Labbitspace",
+        sinopse = "Numa corrida contra o tempo, um jovem percorre um cemitério no meio do nada, em busca de algo que possa quebrar uma maldição fatal. Dentre assassinatos e segredos ocultos, apenas a escuridão é uma certeza.",
+        ano = 2021,
+        plataformas = "PC",
+        capa = "https://cdn.akamai.steamstatic.com/steamcommunity/public/images/apps/1546950/e56024a822814d8402834d69d199d080b6248290.jpg",
+    ),
+
+    Jogos(
+        nome = "Devil Inside Us: Roots of Evil",
+        genero = "Terror",
+        classificacao = "12",
+        estudio = "Mr.Skull Game Studio",
+        sinopse = "Jogue como o exorcista Aughust Heylel! Utilize seu crucifixo e habilidades mediúnicas para expurgar o mal nessa experiência de terror em primeira pessoa!",
+        ano = 2021,
+        plataformas = "PC",
+        capa = "https://cdn.cloudflare.steamstatic.com/steam/apps/1543520/header.jpg?t=1635390168",
+    ),
+
+    Jogos(
+        nome = "No Place for Bravery",
+        genero = "Aventura",
+        classificacao = "10",
+        estudio = "Glitch Factory",
+        sinopse = "Thorn, um velho e ambicioso guerreiro, perambula por um mundo devastado pela guerra em busca de sua filha perdida. Sobreviva às batalhas desenfreadas e violentas neste RPG de ação 2D com visão de cima, e descubra a história arrepiante por trás da odisseia de Thorn.",
+        ano = 2022,
+        plataformas = "PC, Nintendo Switch",
+        capa = "https://cdn.mobygames.com/7291ad26-ac14-11ed-a599-02420a000132.webp",
+    ),
+
+    Jogos(
+        nome = "Horizon Chase 2",
+        genero = "Ação",
+        classificacao = "L",
+        estudio = "Aquiris Game Studio",
+        sinopse = "A sequência do aclamado Horizon Chase, que repete a fórmula de jogo de corrida com inspiração nos clássicos do gênero dos anos 1980 e 1990, como Top Gear.",
+        ano = 2022,
+        plataformas = "Mobile",
+        capa = "https://cdn.mobygames.com/189d4942-ac14-11ed-8ce3-02420a000131.webp",
+    ),
+
+    Jogos(
+        nome = "Hazel Sky",
+        genero = "Aventura",
+        classificacao = "L",
+        estudio = "Coffee Addict Studio",
+        sinopse = "Hazel Sky é uma história comovente sobre um jovem engenheiro desafiando seu destino e seus desejos. Conserte máquinas, pule, escale, balance e escorregue por um belo e misterioso mundo.",
+        ano = 2022,
+        plataformas = "PlayStation 4, Xbox One, Nintendo Switch, PC",
+        capa = "https://cdn.mobygames.com/6c2d81d0-ac14-11ed-8ce3-02420a000131.webp",
+    ),
+
+    Jogos(
+        nome = "Kukoos: Lost Pets",
+        genero = "Aventura",
+        classificacao = "L",
+        estudio = "PetitFabrik",
+        sinopse = "Descubra o universo dos Kukoos neste incrível jogo de plataforma 3D. Explore mundos misteriosos e descubra mistérios para libertar os pets que sofreram lavagem cerebral. Conheça grandes personagens, novas mecânicas, lugares malucos e divirta-se a valer!",
+        ano = 2021,
+        plataformas = "PlayStation 4, Nintendo Switch e PC",
+        capa = "https://cdn.mobygames.com/d7aa030a-ac16-11ed-8d66-02420a000132.webp",
+    ),
+
+    Jogos(
+        nome = "Togges",
+        genero = "Ação",
+        classificacao = "L",
+        estudio = "Regular Studio",
+        sinopse = "Togges é um Plataforma 3D collect-a-thon sobre espalhar e empilhar adoráveis cubos ao redor do espaço-sideral! Explore mundos únicos, solucione enigmas, e supere desafios nessa aventura rumo a dominar o universo!",
+        ano = 2022,
+        plataformas = "PlayStation 4, PlayStation 5, Xbox One, Xbox Series X|S, Nintendo Switch, PC",
+        capa = "https://cdn.mobygames.com/6d930656-ac16-11ed-9271-02420a000133.webp",
+    ),
+
+    Jogos(
+        nome = "Esquadrão 51 contra os Discos Voadores",
+        genero = "",
+        classificacao = "12",
+        estudio = "Loomiarts e Fehorama Filmes",
+        sinopse = "OVNIS! Alienígenas! Aviões! Resistência! SHOOT’EM UP! Esquadrão 51 é um shooter espacial com jogabilidade 2D e ambientação 3D. Divirta-se com a incrível combinação de uma acelerada experiência de tiro e a estética dos filmes de ficção científica dos anos 50,",
+        ano = 2022,
+        plataformas = "PC",
+        capa = "https://cdn.mobygames.com/78b41bd0-c8ca-11ed-a401-02420a00016a.webp",
+    ),
+
+    Jogos(
+        nome = "Relic Hunters: Rebeldes",
+        genero = "Aventura",
+        classificacao = "L",
+        estudio = "Rogue Snail",
+        sinopse = "Rápido. Espontâneo. Divertido. Junte até 3 amigos, equipe-se e salve a Galáxia de um terrível vilão que roubou o passado neste jogo on-line cooperativo de RPG de ação looter-shooter.",
+        ano = 2023,
+        plataformas = "Mobile",
+        capa = "https://cdn.mobygames.com/1a6ecea4-ac04-11ed-902e-02420a00012d.webp",
+    ),
+
+    Jogos(
+        nome = "Pãozito",
+        genero = "Casual",
+        classificacao = "L",
+        estudio = "Magalu Games",
+        sinopse = "O jogador controla um pedaço de pão, que precisa salvar o café da manhã! Para isso, é preciso ser arremessado por uma torradeira na direção de balões que, quando estourados, geram bacon, leite, ovos e outras comidas para a refeição perfeita.",
+        ano = 2022,
+        plataformas = "Mobile",
+        capa = "https://play-lh.googleusercontent.com/O5o3lF_5z1ULs0wl5H0Aaj5XXpJFvwxITpDicV4oZUYSsqu7_yriJY_vDD1TGCEhce5W=w526-h296-rw",
+    ),
+
+    Jogos(
+        nome = "Dolmen",
+        genero = "Ação",
+        classificacao = "12",
+        estudio = "Massive Work Studio",
+        sinopse = "Dolmen é um jogo de ação em terceira pessoa com elementos de RPG, onde Sci-Fi e Cosmic Horror são misturados em uma experiência de jogo envolvente! Pegue a sua chave no Kickstarter!",
+        ano = 2022,
+        plataformas = "PlayStation 4, PlayStation 5, Xbox One, Xbox Series X|S, PC",
+        capa = "https://cdn.mobygames.com/d034c104-ac12-11ed-aca6-02420a000132.webp",
+    ),
+
+    Jogos(
+        nome = "171",
+        genero = "Ação",
+        classificacao = "18",
+        estudio = "Betagames Group",
+        sinopse = "171 é um jogo de ação e aventura de mundo aberto com ambientação inspirada no Brasil.",
+        ano = 2022,
+        plataformas = "PC",
+        capa = "https://gamerview.uai.com.br/wp-content/uploads/2023/01/171-header.jpg",
+    ),
+
+    Jogos(
+        nome = "Arida: Backland's Awakening",
+        genero = "Aventura",
+        classificacao = "L",
+        estudio = "Aoca Game",
+        sinopse = "Arida narra a história de Cícera, uma jovem sertaneja que inicia uma jornada pelo sertão brasileiro no século XIX. O jogo é influenciado por elementos da cultura e da sabedoria popular.",
+        ano = 2019,
+        plataformas = "PC, Mobile",
+        capa = "https://store-images.s-microsoft.com/image/apps.4801.14213541312509668.491f1de9-ea1e-4cc9-969b-35354172484b.cf186198-c4b6-4086-b466-36bdfdd28d4c?mode=scale&q=90&h=225&w=150",
+    ),
 )
 
 val sampleSectionsJogos = mapOf(

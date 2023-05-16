@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -37,7 +38,6 @@ import br.com.example.brazookatelas.sampledata.sampleJogos
 import br.com.example.brazookatelas.ui.components.items.JogoItemPager
 import br.com.example.brazookatelas.ui.components.items.RatingBar
 import br.com.example.brazookatelas.ui.components.items.notaJogos
-import br.com.example.brazookatelas.ui.components.sections.row.calculateCurrentOffsetForPage
 import coil.compose.AsyncImage
 import kotlinx.coroutines.launch
 import kotlin.math.absoluteValue
@@ -87,7 +87,7 @@ fun JogosRowTrendPager(
     jogos: List<Jogos>,
     modifier: Modifier = Modifier,
 ) {
-    val pagerStateJogos = rememberPagerState()
+
     Column() {
 
         Row(
@@ -107,7 +107,7 @@ fun JogosRowTrendPager(
 
 
 
-
+        val pagerStateJogos = rememberPagerState()
         HorizontalPager(
             pageCount = 5,
             state = pagerStateJogos,
@@ -115,20 +115,21 @@ fun JogosRowTrendPager(
             modifier = Modifier.height(385.dp)
 
         ) { page ->
+
             Box(
                 Modifier
                     .wrapContentSize()
                     .graphicsLayer {
-                        val pageOffset =
-                            pagerStateJogos.calculateCurrentOffsetForPage(page).absoluteValue
+                        val pageOffsetJogos =
+                            pagerStateJogos.calculateCurrentOffsetForPageJogos(page).absoluteValue
                         lerp(
-                            start = 0.85f, stop = 1f, fraction = 1f - pageOffset.coerceIn(0f, 1f)
+                            start = 0.85f, stop = 1f, fraction = 1f - pageOffsetJogos.coerceIn(0f, 1f)
                         ).also { scale ->
                             scaleX = scale
                             scaleY = scale
                         }
                         alpha = lerp(
-                            start = 0.5f, stop = 1f, fraction = 1f - pageOffset.coerceIn(0f, 1f)
+                            start = 0.5f, stop = 1f, fraction = 1f - pageOffsetJogos.coerceIn(0f, 1f)
                         )
 
                     }) {
@@ -142,7 +143,7 @@ fun JogosRowTrendPager(
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
                     Surface(
                         elevation = 8.dp,
-                        shape = RoundedCornerShape(6.dp),
+                        shape = RoundedCornerShape(16.dp),
                         modifier = Modifier.size(
                             width = 240.dp, height = 360.dp
                         )
@@ -272,6 +273,11 @@ fun JogosRowTrendPager(
             }
         }
     }
+}
+
+@OptIn(ExperimentalFoundationApi::class)
+fun PagerState.calculateCurrentOffsetForPageJogos(page: Int): Float {
+    return (currentPage - page) + currentPageOffsetFraction
 }
 
 

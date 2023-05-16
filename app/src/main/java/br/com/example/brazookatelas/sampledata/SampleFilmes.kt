@@ -132,7 +132,7 @@ val sampleFilmes = listOf(
         roteiristas = "Ben Nicholas, David Tryhorn",
         diretores = "Ben Nicholas, David Tryhorn",
         nota = 7.0,
-        poster = "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/cVKAep8V6rrFh0IhABC0bkzjwK5.jpg",
+        poster = "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/tX2gco2U4MlKEWwM4UkiIf1C74e.jpg",
         ano = 2021
     ),
 

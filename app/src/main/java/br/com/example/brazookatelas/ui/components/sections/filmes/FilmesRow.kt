@@ -19,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
@@ -142,11 +143,11 @@ fun FilmeRowTrendPager(
 
         val images = filmes.map { it.poster }
         val nomes = filmes.map { it.filme }
-        val pagerState = rememberPagerState()
+        val pagerStateFilme = rememberPagerState()
 
         HorizontalPager(
             pageCount = 5,
-            state = pagerState,
+            state = pagerStateFilme,
             contentPadding = PaddingValues(horizontal = 65.dp),
             modifier = Modifier
                 .height(385.dp)
@@ -157,7 +158,7 @@ fun FilmeRowTrendPager(
                     .wrapContentSize()
                     .graphicsLayer {
                         val pageOffset =
-                            pagerState.calculateCurrentOffsetForPage(page).absoluteValue
+                            pagerStateFilme.calculateCurrentOffsetForPageFilmes(page).absoluteValue
                         lerp(
                             start = 0.85f,
                             stop = 1f,
@@ -177,7 +178,7 @@ fun FilmeRowTrendPager(
             ) {
                 Surface(
                     modifier = Modifier
-                        .size(width = 240.dp, height = 385.dp),
+                        .size(width = 240.dp, height = 360.dp),
                     shape = RoundedCornerShape(15.dp),
                     elevation = 12.dp
                 ) {
@@ -192,7 +193,8 @@ fun FilmeRowTrendPager(
                             model = images[page],
                             contentDescription = "Imagens dos filmes",
                             placeholder = painterResource(id = R.drawable.mundoluna),
-                            modifier = Modifier.width(240.dp)
+                            modifier = Modifier.width(240.dp),
+                            contentScale = ContentScale.FillBounds
                         )
 
                         Text(
@@ -220,7 +222,7 @@ fun FilmeRowTrendPager(
             repeat(5) { it ->
                 val scope = rememberCoroutineScope()
                 val color =
-                    if (pagerState.currentPage == it) Color.DarkGray else Color.LightGray
+                    if (pagerStateFilme.currentPage == it) Color.DarkGray else Color.LightGray
                 Box(
                     modifier = Modifier
                         .padding(8.dp)
@@ -229,7 +231,7 @@ fun FilmeRowTrendPager(
                         .background(color = color)
                         .clickable {
                             scope.launch{
-                                pagerState.animateScrollToPage(it)
+                                pagerStateFilme.animateScrollToPage(it)
                             }
                         }
                 ) {
@@ -241,7 +243,7 @@ fun FilmeRowTrendPager(
 
 
 @OptIn(ExperimentalFoundationApi::class)
-fun PagerState.calculateCurrentOffsetForPage(page: Int): Float {
+fun PagerState.calculateCurrentOffsetForPageFilmes(page: Int): Float {
     return (currentPage - page) + currentPageOffsetFraction
 }
 

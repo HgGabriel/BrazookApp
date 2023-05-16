@@ -12,7 +12,7 @@ val sampleSeries = listOf(
         classificacao = "14",
         atores = "Marina Moschen, Leonardo Bittencourt, Maria Clara Gueiros",
         nota = 6.0,
-        poster = "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/aAPnqsIDOAvDClnt3ukjEMV64Hf.jpg",
+        poster = "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/mBMjRgyRvqT5DNeqU5fUaKJE5BT.jpg",
         ano = 2022
     ),
     Series(

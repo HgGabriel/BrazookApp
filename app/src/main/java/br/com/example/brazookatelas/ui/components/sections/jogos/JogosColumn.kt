@@ -63,7 +63,7 @@ fun JogosColumnRes(
                         Text(
                             text = "Outros",
                             style = MaterialTheme.typography.h6,
-                            modifier = Modifier.padding(start = 16.dp)
+                            modifier = Modifier.padding(start = 16.dp, top = 16.dp)
                         )
                     }
 
@@ -128,7 +128,9 @@ fun JogosTelaColumn() {
             jogos.ano
         }.take(5))
         CategoriesJogos()
-        JogosRowRecom(title = "Recomendações", jogos = sampleJogos.shuffled())
+        JogosRowRecom(title = "Recomendações", jogos = sampleJogos.sortedBy { jogos ->
+            jogos.ano
+        }.take(9))
     }
 }
 
