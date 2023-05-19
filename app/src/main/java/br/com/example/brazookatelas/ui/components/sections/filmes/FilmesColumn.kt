@@ -75,7 +75,7 @@ fun FilmesColumnRes(
                 item {
                     FlowRow(
                         maxItemsInEachRow = 2,
-                        horizontalArrangement = Arrangement.SpaceEvenly,
+                        horizontalArrangement = Arrangement.SpaceAround,
                         modifier = Modifier.fillMaxWidth()
                     ) {
                         repeat(10) {

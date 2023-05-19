@@ -65,7 +65,7 @@ fun FilmesRowRecom(
                     top = 8.dp
                 )
                 .fillMaxWidth(),
-            horizontalArrangement = Arrangement.spacedBy(30.dp),
+            horizontalArrangement = Arrangement.spacedBy(16.dp),
             contentPadding = PaddingValues(horizontal = 16.dp)
         ) {
             items(filmes) { f ->

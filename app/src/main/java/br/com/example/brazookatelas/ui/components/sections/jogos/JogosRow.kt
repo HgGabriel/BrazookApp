@@ -106,7 +106,6 @@ fun JogosRowTrendPager(
         Spacer(modifier = Modifier.height(16.dp))
 
 
-
         val pagerStateJogos = rememberPagerState()
         HorizontalPager(
             pageCount = 5,
@@ -123,13 +122,17 @@ fun JogosRowTrendPager(
                         val pageOffsetJogos =
                             pagerStateJogos.calculateCurrentOffsetForPageJogos(page).absoluteValue
                         lerp(
-                            start = 0.85f, stop = 1f, fraction = 1f - pageOffsetJogos.coerceIn(0f, 1f)
+                            start = 0.85f,
+                            stop = 1f,
+                            fraction = 1f - pageOffsetJogos.coerceIn(0f, 1f)
                         ).also { scale ->
                             scaleX = scale
                             scaleY = scale
                         }
                         alpha = lerp(
-                            start = 0.5f, stop = 1f, fraction = 1f - pageOffsetJogos.coerceIn(0f, 1f)
+                            start = 0.5f,
+                            stop = 1f,
+                            fraction = 1f - pageOffsetJogos.coerceIn(0f, 1f)
                         )
 
                     }) {
@@ -162,13 +165,13 @@ fun JogosRowTrendPager(
                                         edgeTreatment = BlurredEdgeTreatment(RoundedCornerShape(16.dp))
                                     ),
                                 colorFilter = ColorFilter.colorMatrix(ColorMatrix().apply {
-                                        setToScale(
-                                            0.4f,
-                                            0.4f,
-                                            0.4f,
-                                            1f
-                                        )
-                                    }),
+                                    setToScale(
+                                        0.4f,
+                                        0.4f,
+                                        0.4f,
+                                        1f
+                                    )
+                                }),
                             )
                         }
 
@@ -199,50 +202,41 @@ fun JogosRowTrendPager(
                                     .width(150.dp)
                                     .padding(bottom = 4.dp)
                             )
-                            Surface(
-                                elevation = 4.dp,
-                                shape = RoundedCornerShape(6.dp),
+
+
+                            Column(
+                                horizontalAlignment = Alignment.CenterHorizontally,
+                                verticalArrangement = Arrangement.SpaceAround,
                                 modifier = Modifier
-                                    .fillMaxHeight()
-                                    .fillMaxWidth()
+                                    .padding(4.dp)
+                                    .fillMaxSize()
                             ) {
 
-                                Column(
-                                    horizontalAlignment = Alignment.CenterHorizontally,
-                                    verticalArrangement = Arrangement.SpaceAround,
-                                    modifier = Modifier
-                                        .padding(4.dp)
-                                        .fillMaxSize()
-                                ) {
+                                Row(verticalAlignment = Alignment.CenterVertically) {
 
-                                    Row(verticalAlignment = Alignment.CenterVertically) {
 
-                                        Text(
-                                            text = notaJogos.toString(),
-                                            fontStyle = FontStyle.Italic
-                                        )
-                                        RatingBar(rating = notaJogos)
-                                    }
-
-                                    Text(
-                                        text = genero[page],
-                                        color = MaterialTheme.colors.onBackground,
-                                        style = MaterialTheme.typography.subtitle1,
-                                        maxLines = 2,
-                                        fontSize = 16.sp,
-                                        modifier = Modifier.padding(end = 4.dp)
-                                    )
-                                    Text(
-                                        text = plataformas[page],
-                                        color = MaterialTheme.colors.onBackground,
-                                        style = MaterialTheme.typography.subtitle1,
-                                        maxLines = 2,
-                                        textAlign = TextAlign.Center,
-                                        fontSize = 16.sp,
-                                        modifier = Modifier
-                                    )
+                                    RatingBar(rating = notaJogos)
                                 }
+
+                                Text(
+                                    text = genero[page],
+                                    color = MaterialTheme.colors.onBackground,
+                                    style = MaterialTheme.typography.subtitle1,
+                                    maxLines = 2,
+                                    fontSize = 16.sp,
+                                    modifier = Modifier.padding(end = 4.dp)
+                                )
+                                Text(
+                                    text = plataformas[page],
+                                    color = MaterialTheme.colors.onBackground,
+                                    style = MaterialTheme.typography.subtitle1,
+                                    maxLines = 2,
+                                    textAlign = TextAlign.Center,
+                                    fontSize = 16.sp,
+                                    modifier = Modifier
+                                )
                             }
+
                         }
                     }
                 }

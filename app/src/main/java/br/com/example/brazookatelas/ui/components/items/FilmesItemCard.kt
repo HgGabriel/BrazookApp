@@ -49,7 +49,7 @@ fun FilmeItemGrid(
             .padding(4.dp),
         elevation = 4.dp,
         shape = RoundedCornerShape(8.dp),
-        backgroundColor = MaterialTheme.colors.background
+        backgroundColor = Color(0xFF043568)
     ) {
         Column(
             Modifier
