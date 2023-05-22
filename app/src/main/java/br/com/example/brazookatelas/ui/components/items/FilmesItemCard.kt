@@ -49,7 +49,7 @@ fun FilmeItemGrid(
             .padding(4.dp),
         elevation = 4.dp,
         shape = RoundedCornerShape(8.dp),
-        backgroundColor = Color(0xFF043568)
+        backgroundColor = Color(0xFF000000)
     ) {
         Column(
             Modifier
@@ -93,7 +93,6 @@ fun FilmeItemGrid(
 
 
 }
-
 
 @Composable
 fun FilmeItemRow(
@@ -151,8 +150,7 @@ fun FilmeItemPager(
     modifier: Modifier = Modifier,
 ) {
     Surface(
-        modifier = Modifier
-            .size(width = 240.dp, height = 385.dp),
+        modifier = Modifier.size(width = 240.dp, height = 385.dp),
         shape = RoundedCornerShape(15.dp),
         elevation = 12.dp
     ) {
@@ -194,9 +192,7 @@ fun FilmeCardItem(
 
             }
             .fillMaxWidth()
-            .heightIn(150.dp),
-        elevation = elevation
-    ) {
+            .heightIn(150.dp), elevation = elevation) {
         Column {
             AsyncImage(
                 model = filme.poster,
@@ -218,18 +214,19 @@ fun FilmeCardItem(
 
             ) {
                 Text(
-                    text = filme.filme,
-                    color = MaterialTheme.colors.onBackground
+                    text = filme.filme, color = MaterialTheme.colors.onBackground
                 )
 
                 Row(verticalAlignment = Alignment.CenterVertically) {
-                    val notaFilmes = filme.nota / 2
+                    val notaFilmes = filme.nota/2
+                    val notaMenor = String.format("%.1f",notaFilmes)
                     Text(
                         modifier = Modifier.padding(end = 4.dp),
-                        text = notaFilmes.toString(),
-                        fontStyle = FontStyle.Italic
+                        text = notaMenor,
+                        fontStyle = FontStyle.Italic,
+
                     )
-                    RatingBar(rating = filme.nota / 2)
+                    RatingBar(rating = notaFilmes)
                 }
 
             }

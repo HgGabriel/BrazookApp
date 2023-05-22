@@ -311,66 +311,68 @@ fun JogoItemList(jogos: Jogos,) {
             .fillMaxWidth()
             .height(140.dp),
     ) {
-        Row {
-            Surface(
-                shape = RoundedCornerShape(4.dp), elevation = 8.dp, modifier = Modifier
-                    .wrapContentSize()
-                    .padding(top = 12.dp, start = 12.dp, bottom = 12.dp, end = 6.dp)
-                    .align(Alignment.CenterVertically)
-            ) {
-                AsyncImage(
-                    model = jogos.capa,
-                    contentDescription = "Capa do Livro",
-                    placeholder = painterResource(id = R.drawable.fobia),
-                    modifier = Modifier.size(width = 100.dp, height = 100.dp),
-                    contentScale = ContentScale.Crop,
-                )
-            }
-
-            Column(
-                modifier = Modifier
-                    .padding(8.dp)
-                    .fillMaxHeight(), verticalArrangement = Arrangement.Center
-            ) {
-
-                Text(
-                    modifier = Modifier
-                        .fillMaxWidth(),
-                    text = jogos.nome,
-                    style = MaterialTheme.typography.h1,
-                    overflow = TextOverflow.Ellipsis,
-                    maxLines = 2,
-                    fontSize = 20.sp
-                )
-                Text(
-                    modifier = Modifier
-                        .fillMaxWidth(),
-                    text = jogos.estudio,
-                    style = MaterialTheme.typography.subtitle1,
-                    overflow = TextOverflow.Ellipsis,
-                    maxLines = 2,
-                    fontSize = 12.sp,
-                    color = Color.Gray
-                )
-
-                Text(
-                    modifier = Modifier,
-                    text = jogos.genero,
-                    style = MaterialTheme.typography.subtitle1,
-                    overflow = TextOverflow.Ellipsis,
-                    maxLines = 2,
-                    fontSize = 12.sp,
-                    color = MaterialTheme.colors.onBackground
-                )
-                Spacer(modifier = Modifier.height(4.dp))
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text(text = notaJogos.toString(), fontStyle = FontStyle.Italic)
-                    RatingBar(rating = notaJogos)
+        Box(Modifier.background(brush = gradientEscuro)) {
+            Row {
+                Surface(
+                    shape = RoundedCornerShape(4.dp), elevation = 8.dp, modifier = Modifier
+                        .wrapContentSize()
+                        .padding(top = 12.dp, start = 12.dp, bottom = 12.dp, end = 6.dp)
+                        .align(Alignment.CenterVertically)
+                ) {
+                    AsyncImage(
+                        model = jogos.capa,
+                        contentDescription = "Capa do Livro",
+                        placeholder = painterResource(id = R.drawable.fobia),
+                        modifier = Modifier.size(width = 100.dp, height = 100.dp),
+                        contentScale = ContentScale.Crop,
+                    )
                 }
 
+                Column(
+                    modifier = Modifier
+                        .padding(8.dp)
+                        .fillMaxHeight(), verticalArrangement = Arrangement.Center
+                ) {
+
+                    Text(
+                        modifier = Modifier
+                            .fillMaxWidth(),
+                        text = jogos.nome,
+                        style = MaterialTheme.typography.h1,
+                        overflow = TextOverflow.Ellipsis,
+                        maxLines = 2,
+                        fontSize = 20.sp
+                    )
+                    Text(
+                        modifier = Modifier
+                            .fillMaxWidth(),
+                        text = jogos.estudio,
+                        style = MaterialTheme.typography.subtitle1,
+                        overflow = TextOverflow.Ellipsis,
+                        maxLines = 2,
+                        fontSize = 12.sp,
+                        color = Color.Gray
+                    )
+
+                    Text(
+                        modifier = Modifier,
+                        text = jogos.genero,
+                        style = MaterialTheme.typography.subtitle1,
+                        overflow = TextOverflow.Ellipsis,
+                        maxLines = 2,
+                        fontSize = 12.sp,
+                        color = MaterialTheme.colors.onBackground
+                    )
+                    Spacer(modifier = Modifier.height(4.dp))
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Text(text = notaJogos.toString(), fontStyle = FontStyle.Italic)
+                        RatingBar(rating = notaJogos)
+                    }
+
+                }
+
+
             }
-
-
         }
     }
 }

@@ -26,7 +26,7 @@ fun FilmesGrid(
         Text(
             text = title,
             style = MaterialTheme.typography.h6,
-            modifier = Modifier.padding(top = 16.dp, start = 16.dp)
+            modifier = Modifier.padding(top = 16.dp, start = 16.dp, bottom = 16.dp)
         )
 
 

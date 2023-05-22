@@ -5,12 +5,14 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 import com.plcoding.bottomnavwithbadges.ui.theme.Typography
 
 private val DarkColorPalette = darkColors(
     primary = Purple200,
     primaryVariant = Purple700,
-    secondary = Teal200
+    secondary = Teal200,
+    background = Color.Black.copy(alpha = 0.8f)
 )
 
 private val LightColorPalette = lightColors(
@@ -33,7 +35,7 @@ fun BrazookaTelasTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Com
     val colors = if (darkTheme) {
         DarkColorPalette
     } else {
-        LightColorPalette
+        DarkColorPalette
     }
 
     MaterialTheme(

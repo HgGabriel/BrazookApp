@@ -1,5 +1,6 @@
 package br.com.example.brazookatelas.ui.components.sections.filmes
 
+import android.content.Intent
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -9,6 +10,7 @@ import androidx.compose.material.TextButton
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -21,6 +23,8 @@ import br.com.example.brazookatelas.ui.components.items.FilmeCardItem
 import br.com.example.brazookatelas.ui.components.items.FilmeItemGrid
 import br.com.example.brazookatelas.ui.components.sections.row.FilmeRowTrendPager
 import br.com.example.brazookatelas.ui.components.sections.row.FilmesRowRecom
+import br.com.example.brazookatelas.ui.screens.FilmesActivity
+
 
 val outrosFilmes = sampleFilmes.sortedBy { filme ->
     filme.filme
@@ -32,6 +36,7 @@ fun FilmesColumnRes(
     sections: Map<String, List<Filmes>>,
     searchText: String = "",
 ) {
+    val fContext = LocalContext.current
     Column {
         var text by remember {
             mutableStateOf(searchText)
@@ -69,7 +74,7 @@ fun FilmesColumnRes(
                 }
 
                 item {
-                    Text(text = "Outros", style = MaterialTheme.typography.h6)
+                    Text(text = "Outros", style = MaterialTheme.typography.h4)
                 }
 
                 item {
@@ -85,7 +90,9 @@ fun FilmesColumnRes(
                 }
 
                 item {
-                    TextButton(onClick = { }) {
+                    TextButton(onClick = {
+                        fContext.startActivity(Intent(fContext, FilmesActivity::class.java))
+                    }) {
                         Text(text = "Ver mais", fontSize = 20.sp)
                     }
                 }
