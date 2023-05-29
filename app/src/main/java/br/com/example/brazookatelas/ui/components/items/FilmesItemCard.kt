@@ -152,7 +152,7 @@ fun FilmeItemPager(
     Surface(
         modifier = Modifier.size(width = 240.dp, height = 385.dp),
         shape = RoundedCornerShape(15.dp),
-        elevation = 12.dp
+        elevation = 12.dp,
     ) {
         Column(
             modifier = Modifier.size(width = 240.dp, height = 330.dp),
@@ -251,21 +251,21 @@ fun RatingBar(
             Icon(
                 imageVector = Icons.Outlined.Star,
                 contentDescription = null,
-                tint = MaterialTheme.colors.primary
+                tint = starsColor
             )
         }
         if (halfStar) {
             Icon(
                 imageVector = Icons.Outlined.StarHalf,
                 contentDescription = null,
-                tint = MaterialTheme.colors.primary
+                tint = starsColor
             )
         }
         repeat(unfilledStars) {
             Icon(
                 imageVector = Icons.Outlined.StarOutline,
                 contentDescription = null,
-                tint = MaterialTheme.colors.primary
+                tint = starsColor
             )
         }
     }

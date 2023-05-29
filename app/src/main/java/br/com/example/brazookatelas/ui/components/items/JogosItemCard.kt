@@ -31,9 +31,7 @@ import br.com.example.brazookatelas.model.Jogos
 import br.com.example.brazookatelas.sampledata.sampleJogos
 import coil.compose.AsyncImage
 import java.math.BigDecimal
-
-val notaJogos = BigDecimal((4..5).random()).setScale(2).toDouble()
-
+val notaJogos = BigDecimal((3..5).random()).setScale(2).toDouble()
 @Composable
 fun JogoItemPager(
     jogos: Jogos,

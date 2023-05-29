@@ -1,5 +1,6 @@
 package br.com.example.brazookatelas.ui.components.sections.row
 
+import android.content.Intent
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -20,6 +21,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
@@ -31,6 +33,8 @@ import br.com.example.brazookatelas.model.Series
 import br.com.example.brazookatelas.sampledata.sampleSeries
 import br.com.example.brazookatelas.ui.components.items.SerieItemPager
 import br.com.example.brazookatelas.ui.components.items.SerieItemRow
+import br.com.example.brazookatelas.ui.screens.LivrosActivity
+import br.com.example.brazookatelas.ui.screens.SeriesActivity
 import coil.compose.AsyncImage
 import kotlinx.coroutines.launch
 import kotlin.math.absoluteValue
@@ -42,6 +46,7 @@ fun SeriesRowRecom(
     series: List<Series>,
     modifier: Modifier = Modifier,
 ) {
+    val fContext = LocalContext.current
     Column(modifier) {
 
         Row(
@@ -52,7 +57,7 @@ fun SeriesRowRecom(
                 .padding(horizontal = 16.dp)
         ) {
             Text(text = title, style = MaterialTheme.typography.h6)
-            TextButton(onClick = { }) {
+            TextButton(onClick = {fContext.startActivity(Intent(fContext, SeriesActivity::class.java)) }) {
                 Text(text = "Ver tudo")
             }
         }
@@ -81,6 +86,7 @@ fun SerieRowTrend(
     series: List<Series>,
     modifier: Modifier = Modifier,
 ) {
+    val fContext = LocalContext.current
     Column(modifier) {
 
         Row(
@@ -91,7 +97,9 @@ fun SerieRowTrend(
                 .padding(horizontal = 24.dp)
         ) {
             Text(text = title, style = MaterialTheme.typography.h6)
-            TextButton(onClick = { }) {
+            TextButton(onClick = {
+                fContext.startActivity(Intent(fContext, SeriesActivity::class.java))
+            }) {
                 Text(text = "Ver todos")
             }
         }
@@ -121,7 +129,7 @@ fun SerieRowTrendPager(
     modifier: Modifier = Modifier,
 
     ) {
-
+    val fContext = LocalContext.current
     Column{
 
         Row(
@@ -132,7 +140,9 @@ fun SerieRowTrendPager(
                 .padding(bottom = 8.dp, start = 16.dp, end = 16.dp)
         ) {
             Text(text = title, style = MaterialTheme.typography.h6)
-            TextButton(onClick = { }) {
+            TextButton(onClick = {
+                fContext.startActivity(Intent(fContext, SeriesActivity::class.java))
+            }) {
                 Text(text = "Ver todos")
             }
         }

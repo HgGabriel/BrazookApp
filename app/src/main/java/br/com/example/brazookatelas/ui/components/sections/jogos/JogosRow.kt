@@ -1,3 +1,4 @@
+import android.content.Intent
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -25,6 +26,7 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.ColorMatrix
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.style.TextAlign
@@ -38,6 +40,8 @@ import br.com.example.brazookatelas.sampledata.sampleJogos
 import br.com.example.brazookatelas.ui.components.items.JogoItemPager
 import br.com.example.brazookatelas.ui.components.items.RatingBar
 import br.com.example.brazookatelas.ui.components.items.notaJogos
+import br.com.example.brazookatelas.ui.screens.FilmesActivity
+import br.com.example.brazookatelas.ui.screens.JogosActivity
 import coil.compose.AsyncImage
 import kotlinx.coroutines.launch
 import kotlin.math.absoluteValue
@@ -49,17 +53,20 @@ fun JogosRowRecom(
     jogos: List<Jogos>,
     modifier: Modifier = Modifier,
 ) {
-    Column(modifier) {
+    val fContext = LocalContext.current
+    Column(modifier = Modifier.padding(bottom = 16.dp)) {
 
         Row(
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 24.dp)
+                .padding(horizontal = 16.dp)
         ) {
             Text(text = title, style = MaterialTheme.typography.h6)
-            TextButton(onClick = { }) {
+            TextButton(onClick = {
+                fContext.startActivity(Intent(fContext, JogosActivity::class.java))
+            }) {
                 Text(text = "Ver todos")
             }
         }
@@ -87,7 +94,7 @@ fun JogosRowTrendPager(
     jogos: List<Jogos>,
     modifier: Modifier = Modifier,
 ) {
-
+    val fContext = LocalContext.current
     Column() {
 
         Row(
@@ -98,7 +105,9 @@ fun JogosRowTrendPager(
                 .padding(bottom = 8.dp, start = 16.dp, end = 16.dp)
         ) {
             Text(text = title, style = MaterialTheme.typography.h6)
-            TextButton(onClick = { }) {
+            TextButton(onClick = {
+                fContext.startActivity(Intent(fContext, JogosActivity::class.java))
+            }) {
                 Text(text = "Ver todos")
             }
         }
@@ -283,6 +292,6 @@ fun JogosRowTrendPagerPreview() {
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun JogosRowTrendPreview() {
+fun JogosRowRecomPreview() {
     JogosRowRecom(title = "Em alta", jogos = sampleJogos)
 }

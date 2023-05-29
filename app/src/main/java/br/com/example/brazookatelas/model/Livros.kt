@@ -1,6 +1,9 @@
 package br.com.example.brazookatelas.model
 
+import java.util.*
+
 data class Livros(
+    val id: String = UUID.randomUUID().toString(),
     val nome: String,
     val sinopse: String,
     val autor: String,

@@ -2,15 +2,18 @@ package br.com.example.brazookatelas.ui.components.sections.jogos
 
 import JogosRowRecom
 import JogosRowTrendPager
+import android.content.Intent
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -19,12 +22,15 @@ import br.com.example.brazookatelas.sampledata.sampleJogos
 import br.com.example.brazookatelas.ui.components.CategoriesJogos
 import br.com.example.brazookatelas.ui.components.SearchTextField
 import br.com.example.brazookatelas.ui.components.items.JogoItemList
+import br.com.example.brazookatelas.ui.screens.FilmesActivity
+import br.com.example.brazookatelas.ui.screens.JogosActivity
 
 @Composable
 fun JogosColumnRes(
     sections: Map<String, List<Jogos>>,
     searchText: String = "",
 ) {
+    val fContext = LocalContext.current
     Column {
         var text by remember {
             mutableStateOf(searchText)
@@ -60,6 +66,7 @@ fun JogosColumnRes(
                 item {
                     Column(horizontalAlignment = Alignment.Start) {
                         JogosTelaColumn()
+                        Divider(thickness = 4.dp)
                         Text(
                             text = "Outros",
                             style = MaterialTheme.typography.h6,
@@ -83,7 +90,9 @@ fun JogosColumnRes(
                 }
 
                 item{
-                    TextButton(onClick = { }) {
+                    TextButton(onClick = {
+                        fContext.startActivity(Intent(fContext, JogosActivity::class.java))
+                    }) {
                         Text(text = "Ver mais", fontSize = 20.sp)
                     }
                 }
@@ -102,21 +111,29 @@ fun JogosColumnRes(
 }
 
 @Composable
-fun JogosList(
+fun JogosList(title: String = "",
     jogos: List<Jogos>,
     modifier: Modifier = Modifier,
 ) {
-    LazyColumn(
-        Modifier
-            .padding(
-                top = 8.dp
-            )
-            .fillMaxWidth(),
-        verticalArrangement = Arrangement.spacedBy(16.dp),
-        contentPadding = PaddingValues(horizontal = 16.dp)
-    ) {
-        items(jogos) { j ->
-            JogoItemList(jogos = j)
+    Column {
+        Text(
+            text = title,
+            style = MaterialTheme.typography.h6,
+            modifier = Modifier.padding(top = 16.dp, start = 16.dp, bottom = 16.dp)
+        )
+
+        LazyColumn(
+            Modifier
+                .padding(
+                    top = 8.dp
+                )
+                .fillMaxWidth(),
+            verticalArrangement = Arrangement.spacedBy(16.dp),
+            contentPadding = PaddingValues(horizontal = 16.dp)
+        ) {
+            items(jogos) { j ->
+                JogoItemList(jogos = j)
+            }
         }
     }
 }

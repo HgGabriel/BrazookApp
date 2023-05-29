@@ -1,5 +1,6 @@
 package br.com.example.brazookatelas.ui.components.sections.row
 
+import android.content.Intent
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -20,6 +21,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
@@ -31,6 +33,7 @@ import br.com.example.brazookatelas.model.Filmes
 import br.com.example.brazookatelas.sampledata.sampleFilmes
 import br.com.example.brazookatelas.ui.components.items.FilmeItemPager
 import br.com.example.brazookatelas.ui.components.items.FilmeItemRow
+import br.com.example.brazookatelas.ui.screens.FilmesActivity
 import coil.compose.AsyncImage
 import kotlinx.coroutines.launch
 import kotlin.math.absoluteValue
@@ -41,7 +44,9 @@ fun FilmesRowRecom(
     title: String,
     filmes: List<Filmes>,
     modifier: Modifier = Modifier,
+    onNavigateToDetails: (Filmes) -> Unit = {},
 ) {
+    val fContext = LocalContext.current
     Column(modifier) {
 
         Row(
@@ -52,7 +57,9 @@ fun FilmesRowRecom(
                 .padding(horizontal = 16.dp)
         ) {
             Text(text = title, style = MaterialTheme.typography.h6)
-            TextButton(onClick = { }) {
+            TextButton(onClick = {
+                fContext.startActivity(Intent(fContext, FilmesActivity::class.java))
+            }) {
                 Text(text = "Ver tudo")
             }
         }
@@ -69,7 +76,12 @@ fun FilmesRowRecom(
             contentPadding = PaddingValues(horizontal = 16.dp)
         ) {
             items(filmes) { f ->
-                FilmeItemRow(filme = f)
+                FilmeItemRow(
+                    filme = f,
+                    Modifier.clickable {
+                        onNavigateToDetails(f)
+                    },
+                )
             }
         }
     }
@@ -81,6 +93,7 @@ fun FilmeRowTrend(
     filmes: List<Filmes>,
     modifier: Modifier = Modifier,
 ) {
+    val fContext = LocalContext.current
     Column(modifier) {
 
         Row(
@@ -91,7 +104,9 @@ fun FilmeRowTrend(
                 .padding(horizontal = 24.dp)
         ) {
             Text(text = title, style = MaterialTheme.typography.h6)
-            TextButton(onClick = { }) {
+            TextButton(onClick = {
+                fContext.startActivity(Intent(fContext, FilmesActivity::class.java))
+            }) {
                 Text(text = "Ver todos")
             }
         }
@@ -106,8 +121,8 @@ fun FilmeRowTrend(
             horizontalArrangement = Arrangement.spacedBy(16.dp),
             contentPadding = PaddingValues(horizontal = 16.dp)
         ) {
-            items(filmes) { f2 ->
-                FilmeItemPager(filme = f2)
+            items(filmes) { f ->
+                FilmeItemPager(filme = f)
             }
         }
     }
@@ -116,12 +131,12 @@ fun FilmeRowTrend(
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun FilmeRowTrendPager(
+    onNavigateToDetails: (Filmes) -> Unit = {},
     title: String,
     filmes: List<Filmes>,
     modifier: Modifier = Modifier,
-
-    ) {
-
+) {
+    val fContext = LocalContext.current
     Column(
         modifier = Modifier.fillMaxSize()
     ) {
@@ -134,7 +149,9 @@ fun FilmeRowTrendPager(
                 .padding(bottom = 8.dp, start = 16.dp, end = 16.dp)
         ) {
             Text(text = title, style = MaterialTheme.typography.h6)
-            TextButton(onClick = { }) {
+            TextButton(onClick = {
+                fContext.startActivity(Intent(fContext, FilmesActivity::class.java))
+            }) {
                 Text(text = "Ver todos")
             }
         }
@@ -156,6 +173,9 @@ fun FilmeRowTrendPager(
             Box(
                 Modifier
                     .wrapContentSize()
+                    .clickable {
+                        onNavigateToDetails
+                    }
                     .graphicsLayer {
                         val pageOffset =
                             pagerStateFilme.calculateCurrentOffsetForPageFilmes(page).absoluteValue
@@ -230,7 +250,7 @@ fun FilmeRowTrendPager(
                         .size(12.dp)
                         .background(color = color)
                         .clickable {
-                            scope.launch{
+                            scope.launch {
                                 pagerStateFilme.animateScrollToPage(it)
                             }
                         }
@@ -247,11 +267,11 @@ fun PagerState.calculateCurrentOffsetForPageFilmes(page: Int): Float {
     return (currentPage - page) + currentPageOffsetFraction
 }
 
-@Preview(showBackground = true, showSystemUi = true)
-@Composable
-fun FilmeRowTrendPagerPreview() {
-    FilmeRowTrendPager(title = "Em Alta", filmes = sampleFilmes)
-}
+//@Preview(showBackground = true, showSystemUi = true)
+//@Composable
+//fun FilmeRowTrendPagerPreview() {
+//    FilmeRowTrendPager(title = "Em Alta", filmes = sampleFilmes, onMovieClicked)
+//}
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable

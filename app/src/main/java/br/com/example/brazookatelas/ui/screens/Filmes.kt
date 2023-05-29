@@ -29,7 +29,9 @@ class FilmesActivity : ComponentActivity() {
                         modifier = Modifier.fillMaxSize(),
                         color = MaterialTheme.colors.background
                     ) {
-                        FilmesGrid(title = "Todos os Filmes", filmes = sampleFilmes)
+                        FilmesGrid(title = "Todos os Filmes", filmes = sampleFilmes.sortedBy {filmes ->
+                            filmes.filme
+                        })
                     }
                 }
             }
@@ -41,7 +43,7 @@ class FilmesActivity : ComponentActivity() {
 @Composable
 fun FilmesScreen() {
     Column {
-        FilmesColumnRes(sections = sampleSectionsFilmes)
+        FilmesColumnRes()
     }
 }
 

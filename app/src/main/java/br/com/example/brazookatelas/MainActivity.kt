@@ -33,7 +33,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import br.com.example.brazookatelas.AppRoute.Navigation
 import br.com.example.brazookatelas.model.BottomNavItem
+import br.com.example.brazookatelas.route.AppRouteName
 import br.com.example.brazookatelas.ui.screens.FilmesScreen
 import br.com.example.brazookatelas.ui.screens.JogosScreen
 import br.com.example.brazookatelas.ui.screens.LivrosScreen
@@ -55,28 +57,32 @@ class MainActivity : ComponentActivity() {
                                 items = listOf(
                                     BottomNavItem(
                                         name = "Filmes",
-                                        route = "filmes",
+                                        route = AppRouteName.Filmes,
                                         icon = Icons.Default.Movie
                                     ),
                                     BottomNavItem(
                                         name = "Series",
-                                        route = "series",
+                                        route = AppRouteName.Series,
                                         icon = Icons.Default.Tv
                                     ),
                                     BottomNavItem(
                                         name = "Livros",
-                                        route = "livros",
+                                        route = AppRouteName.Series,
                                         icon = Icons.Default.Book
                                     ),
                                     BottomNavItem(
                                         name = "Jogos",
-                                        route = "jogos",
+                                        route = AppRouteName.Jogos,
                                         icon = Icons.Default.VideogameAsset
                                     ),
                                 ),
                                 navController = navController,
                                 onItemClick = {
-                                    navController.navigate(it.route)
+                                    val route = it.route
+                                    navController.navigate(route){
+                                        launchSingleTop = true
+                                        popUpTo(route)
+                                    }
                                 }
                             )
                         }
@@ -92,25 +98,6 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-}
-
-
-@Composable
-fun Navigation(navController: NavHostController) {
-    NavHost(navController = navController, startDestination = "filmes") {
-        composable("filmes") {
-            FilmesScreen()
-        }
-        composable("livros") {
-            LivrosScreen()
-        }
-        composable("jogos") {
-            JogosScreen()
-        }
-        composable("series") {
-            SeriesScreen()
-        }
-    }
 }
 
 @ExperimentalMaterialApi

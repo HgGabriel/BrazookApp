@@ -1,14 +1,17 @@
 package br.com.example.brazookatelas.ui.components.sections.filmes
 
+import android.content.Intent
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -21,6 +24,7 @@ import br.com.example.brazookatelas.ui.components.items.SeriesItemGrid
 import br.com.example.brazookatelas.ui.components.sections.Series.CategoriesSeries
 import br.com.example.brazookatelas.ui.components.sections.row.SerieRowTrendPager
 import br.com.example.brazookatelas.ui.components.sections.row.SeriesRowRecom
+import br.com.example.brazookatelas.ui.screens.SeriesActivity
 
 val outrasSeries = sampleSeries.sortedBy { serie ->
     serie.nome
@@ -32,6 +36,7 @@ fun SeriesColumnRes(
     sections: Map<String, List<Series>>,
     searchText: String = "",
 ) {
+    val fContext = LocalContext.current
     Column {
         var text by remember {
             mutableStateOf(searchText)
@@ -65,11 +70,15 @@ fun SeriesColumnRes(
         ) {
             if (text.isBlank()) {
                 item {
-                    SeriesTelaColumn()
-                }
-
-                item {
-                    Text(text = "Outros", style = MaterialTheme.typography.h6)
+                    Column(horizontalAlignment = Alignment.Start) {
+                        SeriesTelaColumn()
+                        Divider(thickness = 4.dp)
+                        Text(
+                            text = "Outros",
+                            style = MaterialTheme.typography.h6,
+                            modifier = Modifier.padding(start = 16.dp, top = 16.dp)
+                        )
+                    }
                 }
 
                 item {
@@ -85,7 +94,9 @@ fun SeriesColumnRes(
                 }
 
                 item {
-                    TextButton(onClick = { }) {
+                    TextButton(onClick = {
+                        fContext.startActivity(Intent(fContext, SeriesActivity::class.java))
+                    }) {
                         Text(text = "Ver mais", fontSize = 20.sp)
                     }
                 }

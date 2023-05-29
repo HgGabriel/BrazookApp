@@ -43,7 +43,8 @@ fun SearchTextField(
         },
         placeholder = {
             Text(text = "O que você procura?")
-        }
+        },
+        singleLine = true
     )
 
 }

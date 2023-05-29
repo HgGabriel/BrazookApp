@@ -1,9 +1,11 @@
 package br.com.example.brazookatelas.ui.components.sections.filmes
 
 import android.content.Intent
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
@@ -14,7 +16,9 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.compose.rememberNavController
 import br.com.example.brazookatelas.model.Filmes
+import br.com.example.brazookatelas.route.AppRouteName
 import br.com.example.brazookatelas.sampledata.sampleFilmes
 import br.com.example.brazookatelas.sampledata.sampleSectionsFilmes
 import br.com.example.brazookatelas.ui.components.CategoriesFilmes
@@ -33,8 +37,8 @@ val outrosFilmes = sampleFilmes.sortedBy { filme ->
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun FilmesColumnRes(
-    sections: Map<String, List<Filmes>>,
     searchText: String = "",
+    onNavigateToDetails: (Filmes) -> Unit = {},
 ) {
     val fContext = LocalContext.current
     Column {
@@ -70,12 +74,18 @@ fun FilmesColumnRes(
         ) {
             if (text.isBlank()) {
                 item {
-                    FilmesTelaColumn()
+                    Column(horizontalAlignment = Alignment.Start) {
+                        FilmesTelaColumn()
+                        Divider(thickness = 4.dp)
+                        Text(
+                            text = "Outros",
+                            style = MaterialTheme.typography.h6,
+                            modifier = Modifier.padding(start = 16.dp, top = 16.dp)
+                        )
+                    }
                 }
 
-                item {
-                    Text(text = "Outros", style = MaterialTheme.typography.h4)
-                }
+
 
                 item {
                     FlowRow(
@@ -84,7 +94,8 @@ fun FilmesColumnRes(
                         modifier = Modifier.fillMaxWidth()
                     ) {
                         repeat(10) {
-                            FilmeItemGrid(filme = sampleFilmes[it])
+                            FilmeItemGrid(filme = sampleFilmes[it],
+                            )
                         }
                     }
                 }
@@ -98,10 +109,14 @@ fun FilmesColumnRes(
                 }
 
             } else {
-                items(searchedMovie) { f5 ->
+                items(searchedMovie) { f ->
                     FilmeCardItem(
-                        filme = f5,
-                        Modifier.padding(horizontal = 16.dp),
+                        filme = f,
+                        Modifier
+                            .padding(horizontal = 16.dp)
+                            .clickable {
+                                onNavigateToDetails(f)
+                            },
                     )
                 }
 
@@ -113,34 +128,39 @@ fun FilmesColumnRes(
 
 @Composable
 fun FilmesTelaColumn() {
+    val navControler = rememberNavController()
     Column {
         FilmeRowTrendPager(title = "Em alta", filmes = sampleFilmes.sortedByDescending { filmes ->
             filmes.ano
-        }.take(5))
+        }.take(5),  onNavigateToDetails = { filmes ->
+            navControler.navigate("${AppRouteName.DetailFilmes}/${filmes.id}")
+        })
         Spacer(Modifier.height(16.dp))
         CategoriesFilmes()
         Spacer(Modifier.height(16.dp))
         FilmesRowRecom(title = "Recomendações", filmes = sampleFilmes.sortedByDescending { filmes ->
             filmes.nota
+        }, onNavigateToDetails = { filmes ->
+            navControler.navigate("${AppRouteName.DetailFilmes}/${filmes.id}")
         })
         Spacer(Modifier.height(16.dp))
     }
 }
 
-@Preview(showSystemUi = true, showBackground = true)
-@Composable
-fun FilmesTelaColumnPreview() {
-    FilmesTelaColumn()
-}
+//@Preview(showSystemUi = true, showBackground = true)
+//@Composable
+//fun FilmesTelaColumnPreview() {
+//    FilmesTelaColumn(navControler = )
+//}
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun FilmesColumnResPreview() {
-    FilmesColumnRes(sampleSectionsFilmes)
+    FilmesColumnRes()
 }
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun FilmesColumnResPreviewWithText() {
-    FilmesColumnRes(sampleSectionsFilmes, "aa")
+    FilmesColumnRes()
 }

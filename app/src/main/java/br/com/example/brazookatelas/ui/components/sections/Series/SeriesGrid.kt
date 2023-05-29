@@ -22,26 +22,28 @@ fun SeriesGrid(
 ) {
     Column(modifier) {
 
-        Text(
-            text = title,
-            style = MaterialTheme.typography.h6,
-            modifier = Modifier.padding(top = 16.dp, start = 16.dp)
-        )
+        Column {
+            Text(
+                text = title,
+                style = MaterialTheme.typography.h6,
+                modifier = Modifier.padding(top = 16.dp, start = 16.dp, bottom = 16.dp)
+            )
 
 
-        LazyVerticalGrid(
-            columns = GridCells.Fixed(2), Modifier
-                .fillMaxWidth(),
-            horizontalArrangement = Arrangement.spacedBy(16.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp),
-            contentPadding = PaddingValues(16.dp)
+            LazyVerticalGrid(
+                columns = GridCells.Fixed(2), Modifier
+                    .fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(16.dp),
+                verticalArrangement = Arrangement.spacedBy(16.dp),
+                contentPadding = PaddingValues(16.dp)
 
-        ) {
+            ) {
 
-            items(series) { s ->
-                SeriesItemGrid(serie = s)
+                items(series) { s ->
+                    SeriesItemGrid(serie = s)
+                }
+
             }
-
         }
     }
 }
