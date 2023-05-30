@@ -1,5 +1,6 @@
 package br.com.example.brazookatelas.ui.components.items
 
+import android.content.Intent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -14,6 +15,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.style.TextAlign
@@ -22,9 +24,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.content.ContextCompat.startActivity
 import br.com.example.brazookatelas.R
 import br.com.example.brazookatelas.model.Filmes
 import br.com.example.brazookatelas.sampledata.sampleFilmes
+import br.com.example.brazookatelas.ui.screens.Details.DetailsFilmesActivity
 import br.com.example.brazookatelas.ui.theme.BrazookaTelasTheme
 import coil.compose.AsyncImage
 import kotlin.math.ceil
@@ -41,12 +45,13 @@ fun FilmeItemGrid(
     filme: Filmes,
     modifier: Modifier = Modifier,
 ) {
-
+    val fContext = LocalContext.current
     Card(
-        modifier = Modifier
+        modifier
             .width(containerW)
             .height(300.dp)
-            .padding(4.dp),
+            .padding(4.dp)
+            .clickable { fContext.startActivity(DetailsFilmesActivity.newIntent(fContext, filme)) },
         elevation = 4.dp,
         shape = RoundedCornerShape(8.dp),
         backgroundColor = Color(0xFF000000)
@@ -67,7 +72,7 @@ fun FilmeItemGrid(
                 AsyncImage(
                     model = filme.poster,
                     contentDescription = null,
-                    placeholder = painterResource(id = R.drawable.mundoluna),
+                    placeholder = painterResource(id = R.drawable.placeholder),
                     modifier = Modifier.size(width = imageW, height = imageH),
                     contentScale = ContentScale.Crop
                 )
@@ -97,10 +102,13 @@ fun FilmeItemGrid(
 @Composable
 fun FilmeItemRow(
     filme: Filmes,
-    modifier: Modifier = Modifier,
+    onNavigateToDetails: (Filmes) -> Unit = {},
 ) {
+    val fContext = LocalContext.current
     Box(modifier = Modifier
-        .clickable { }
+        .clickable {
+            fContext.startActivity(DetailsFilmesActivity.newIntent(fContext, filme))
+        }
         .width(140.dp)) {
         Column(
             modifier = Modifier.wrapContentHeight(),
@@ -111,7 +119,7 @@ fun FilmeItemRow(
                 contentDescription = "Movie Image",
                 contentScale = ContentScale.FillBounds,
                 modifier = Modifier.size(width = 140.dp, height = 200.dp),
-                placeholder = painterResource(id = R.drawable.mundoluna)
+                placeholder = painterResource(id = R.drawable.placeholder)
             )
             Spacer(modifier = Modifier.height(8.dp))
             Text(
@@ -126,17 +134,19 @@ fun FilmeItemRow(
 
 @Composable
 fun FilmeItemMore(filme: Filmes) {
+    val fContext = LocalContext.current
     Card(
         modifier = Modifier
             .height(imageH)
-            .width(imageW),
+            .width(imageW)
+            .clickable { fContext.startActivity(DetailsFilmesActivity.newIntent(fContext, filme)) },
         elevation = 4.dp,
         shape = RoundedCornerShape(4.dp),
     ) {
         AsyncImage(
             model = filme.poster,
             contentDescription = "Capa do filme",
-            placeholder = painterResource(id = R.drawable.mundoluna),
+            placeholder = painterResource(id = R.drawable.placeholder),
             modifier = Modifier.size(width = 140.dp, height = 220.dp),
             contentScale = ContentScale.Crop
         )
@@ -163,7 +173,7 @@ fun FilmeItemPager(
             AsyncImage(
                 model = filme.poster,
                 contentDescription = "Imagens dos filmes",
-                placeholder = painterResource(id = R.drawable.mundoluna),
+                placeholder = painterResource(id = R.drawable.placeholder),
                 modifier = Modifier.width(240.dp)
             )
             Spacer(Modifier.height(4.dp))
@@ -186,11 +196,10 @@ fun FilmeCardItem(
     modifier: Modifier = Modifier,
     elevation: Dp = 4.dp,
 ) {
+   val fContext = LocalContext.current
     Card(
         modifier
-            .clickable {
-
-            }
+            .clickable { fContext.startActivity(DetailsFilmesActivity.newIntent(fContext, filme)) }
             .fillMaxWidth()
             .heightIn(150.dp), elevation = elevation) {
         Column {
@@ -200,7 +209,7 @@ fun FilmeCardItem(
                 Modifier
                     .fillMaxWidth()
                     .height(350.dp),
-                placeholder = painterResource(id = R.drawable.mundoluna),
+                placeholder = painterResource(id = R.drawable.placeholder),
                 contentScale = ContentScale.Crop
             )
             Row(
@@ -218,14 +227,14 @@ fun FilmeCardItem(
                 )
 
                 Row(verticalAlignment = Alignment.CenterVertically) {
-                    val notaFilmes = filme.nota/2
-                    val notaMenor = String.format("%.1f",notaFilmes)
+                    val notaFilmes = filme.nota / 2
+                    val notaMenor = String.format("%.1f", notaFilmes)
                     Text(
                         modifier = Modifier.padding(end = 4.dp),
                         text = notaMenor,
                         fontStyle = FontStyle.Italic,
 
-                    )
+                        )
                     RatingBar(rating = notaFilmes)
                 }
 
@@ -327,7 +336,7 @@ fun FilmeItemPagerPreview() {
 @Composable
 fun FilmeItemRowPreview() {
     FilmeItemRow(
-        sampleFilmes[1]
+        sampleFilmes[1],
     )
 }
 

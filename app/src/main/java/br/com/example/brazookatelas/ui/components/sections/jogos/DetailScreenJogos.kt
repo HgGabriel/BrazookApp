@@ -1,37 +1,34 @@
-package br.com.example.brazookatelas.ui.components.sections.filmes
+package br.com.example.brazookatelas.ui.components.sections.jogos
 
 import androidx.activity.compose.LocalOnBackPressedDispatcherOwner
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.*
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.Face
+import androidx.compose.material.icons.filled.Star
+import androidx.compose.material.icons.filled.Videocam
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Color.Companion.Gray
-import androidx.compose.ui.graphics.Color.Companion.Green
 import androidx.compose.ui.graphics.Color.Companion.Yellow
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import androidx.navigation.compose.rememberNavController
 import br.com.example.brazookatelas.gradient
-import br.com.example.brazookatelas.model.Filmes
+import br.com.example.brazookatelas.model.Jogos
+import br.com.example.brazookatelas.model.Series
+import br.com.example.brazookatelas.ui.components.sections.filmes.MovieInfo
 import coil.compose.AsyncImage
 
 
 @Composable
-fun DetailScreenFilmes(
-    filmes: Filmes,
+fun DetailScreenJogos(
+    jogos: Jogos,
 ) {
     val onBackPressedDispatcher = LocalOnBackPressedDispatcherOwner.current?.onBackPressedDispatcher
     Box(modifier = Modifier.background(brush = gradient)) {
@@ -44,7 +41,7 @@ fun DetailScreenFilmes(
                         .wrapContentWidth()
                         .height(56.dp),
                     colors = ButtonDefaults.buttonColors(
-                        backgroundColor = Color(0xfffbc35b)
+                        backgroundColor = Yellow
                     ),
                     shape = RoundedCornerShape(32.dp),
                     onClick = {
@@ -81,7 +78,7 @@ fun DetailScreenFilmes(
                         .padding(horizontal = 24.dp)
                 ) {
                     AsyncImage(
-                        model = filmes.poster,
+                        model = jogos.capa,
                         contentDescription = "Movie Image",
                         contentScale = ContentScale.FillBounds,
                         modifier = Modifier
@@ -101,22 +98,22 @@ fun DetailScreenFilmes(
                         MovieInfo(
                             imageVector = Icons.Default.Videocam,
                             title = "Gênero",
-                            value = filmes.genero
+                            value = jogos.genero
                         )
                         MovieInfo(
                             imageVector = Icons.Default.Face,
                             title = "Classificação",
-                            value = filmes.classificacao
+                            value = jogos.classificacao
                         )
                         MovieInfo(
                             imageVector = Icons.Default.Star,
                             title = "Nota",
-                            value = "${filmes.nota}/10"
+                            value = "%.1f/5".format(jogos.nota)
                         )
                     }
                 }
                 Text(
-                    filmes.filme, style = MaterialTheme.typography.h6,
+                    jogos.nome, style = MaterialTheme.typography.h6,
                     modifier = Modifier.padding(
                         horizontal = 24.dp, vertical = 16.dp
                     )
@@ -128,7 +125,7 @@ fun DetailScreenFilmes(
                     )
                 )
                 Text(
-                    filmes.sinopse, style = MaterialTheme.typography.body2,
+                    jogos.sinopse, style = MaterialTheme.typography.body2,
                     modifier = Modifier.padding(
                         horizontal = 24.dp, vertical = 16.dp
                     )
@@ -138,38 +135,5 @@ fun DetailScreenFilmes(
         }
     }
 
-}
-
-@Composable
-fun MovieInfo(
-    imageVector: ImageVector = Icons.Default.Movie,
-    title: String,
-    value: String,
-) {
-    Column(
-        modifier = Modifier
-            .border(width = 1.dp, color = Gray, shape = RoundedCornerShape(16.dp))
-            .clip(RoundedCornerShape(16.dp))
-            .padding(12.dp)
-            .fillMaxWidth()
-            .wrapContentHeight(),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center,
-    ) {
-        Icon(
-            imageVector = imageVector,
-            contentDescription = title,
-        )
-        Spacer(modifier = Modifier.height(4.dp))
-        Text(text = title, style = MaterialTheme.typography.body2,maxLines = 1,
-            overflow = TextOverflow.Ellipsis)
-        Spacer(modifier = Modifier.height(4.dp))
-        Text(
-            text = value,
-            style = MaterialTheme.typography.subtitle1,
-            maxLines = 1,
-            overflow = TextOverflow.Ellipsis
-        )
-    }
 }
 

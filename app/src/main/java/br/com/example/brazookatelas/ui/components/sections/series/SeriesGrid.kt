@@ -1,4 +1,4 @@
-package br.com.example.brazookatelas.ui.components.sections.Series
+package br.com.example.brazookatelas.ui.components.sections.series
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells

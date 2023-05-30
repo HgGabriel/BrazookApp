@@ -39,7 +39,7 @@ import br.com.example.brazookatelas.model.Jogos
 import br.com.example.brazookatelas.sampledata.sampleJogos
 import br.com.example.brazookatelas.ui.components.items.JogoItemPager
 import br.com.example.brazookatelas.ui.components.items.RatingBar
-import br.com.example.brazookatelas.ui.components.items.notaJogos
+import br.com.example.brazookatelas.ui.screens.Details.DetailsJogosActivity
 import br.com.example.brazookatelas.ui.screens.FilmesActivity
 import br.com.example.brazookatelas.ui.screens.JogosActivity
 import coil.compose.AsyncImage
@@ -127,6 +127,9 @@ fun JogosRowTrendPager(
             Box(
                 Modifier
                     .wrapContentSize()
+                    .clickable { fContext.startActivity(DetailsJogosActivity.newIntent(fContext, sampleJogos.sortedByDescending { jogos->
+                        jogos.nota
+                    }.take(5)[page])) }
                     .graphicsLayer {
                         val pageOffsetJogos =
                             pagerStateJogos.calculateCurrentOffsetForPageJogos(page).absoluteValue
@@ -150,6 +153,7 @@ fun JogosRowTrendPager(
                 val ano = jogos.map { it.ano }
                 val genero = jogos.map { it.genero }
                 val plataformas = jogos.map { it.plataformas }
+                val nota = jogos.map { it.nota }
 
 
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
@@ -224,7 +228,7 @@ fun JogosRowTrendPager(
                                 Row(verticalAlignment = Alignment.CenterVertically) {
 
 
-                                    RatingBar(rating = notaJogos)
+                                    RatingBar(rating = nota[page].toDouble())
                                 }
 
                                 Text(

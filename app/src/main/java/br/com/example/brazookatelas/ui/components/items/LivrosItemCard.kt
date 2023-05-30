@@ -61,7 +61,7 @@ fun LivroItemPager(
                     AsyncImage(
                         model = livros.capa,
                         contentDescription = "Capa do Livro",
-                        placeholder = painterResource(id = R.drawable.tudo_rio),
+                        placeholder = painterResource(id = R.drawable.placeholder),
                         modifier = Modifier.size(width = 140.dp, height = 220.dp),
                         contentScale = ContentScale.Crop
                     )
@@ -158,7 +158,7 @@ fun LivroItemRow(
                     model = livros.capa,
                     contentDescription = "Book Image",
                     modifier = Modifier.size(width = 140.dp, height = 200.dp),
-                    placeholder = painterResource(id = R.drawable.tudo_rio),
+                    placeholder = painterResource(id =R.drawable.placeholder),
                     contentScale = ContentScale.FillBounds
                 )
             }
@@ -199,7 +199,7 @@ fun LivroItemList(
                     AsyncImage(
                         model = livros.capa,
                         contentDescription = "Capa do Livro",
-                        placeholder = painterResource(id = R.drawable.tudo_rio),
+                        placeholder = painterResource(id = R.drawable.placeholder),
                         modifier = Modifier.size(width = 70.dp, height = 110.dp),
                         contentScale = ContentScale.Crop,
                     )

@@ -33,6 +33,7 @@ import br.com.example.brazookatelas.model.Filmes
 import br.com.example.brazookatelas.sampledata.sampleFilmes
 import br.com.example.brazookatelas.ui.components.items.FilmeItemPager
 import br.com.example.brazookatelas.ui.components.items.FilmeItemRow
+import br.com.example.brazookatelas.ui.screens.Details.DetailsFilmesActivity
 import br.com.example.brazookatelas.ui.screens.FilmesActivity
 import coil.compose.AsyncImage
 import kotlinx.coroutines.launch
@@ -77,10 +78,7 @@ fun FilmesRowRecom(
         ) {
             items(filmes) { f ->
                 FilmeItemRow(
-                    filme = f,
-                    Modifier.clickable {
-                        onNavigateToDetails(f)
-                    },
+                    filme = f
                 )
             }
         }
@@ -173,9 +171,9 @@ fun FilmeRowTrendPager(
             Box(
                 Modifier
                     .wrapContentSize()
-                    .clickable {
-                        onNavigateToDetails
-                    }
+                    .clickable { fContext.startActivity(DetailsFilmesActivity.newIntent(fContext, sampleFilmes.sortedByDescending{ filmes ->
+                        filmes.ano
+                    }.take(5)[page]))}
                     .graphicsLayer {
                         val pageOffset =
                             pagerStateFilme.calculateCurrentOffsetForPageFilmes(page).absoluteValue

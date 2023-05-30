@@ -21,7 +21,7 @@ import br.com.example.brazookatelas.sampledata.sampleSeries
 import br.com.example.brazookatelas.ui.components.SearchTextField
 import br.com.example.brazookatelas.ui.components.items.SerieCardItem
 import br.com.example.brazookatelas.ui.components.items.SeriesItemGrid
-import br.com.example.brazookatelas.ui.components.sections.Series.CategoriesSeries
+import br.com.example.brazookatelas.ui.components.sections.series.CategoriesSeries
 import br.com.example.brazookatelas.ui.components.sections.row.SerieRowTrendPager
 import br.com.example.brazookatelas.ui.components.sections.row.SeriesRowRecom
 import br.com.example.brazookatelas.ui.screens.SeriesActivity

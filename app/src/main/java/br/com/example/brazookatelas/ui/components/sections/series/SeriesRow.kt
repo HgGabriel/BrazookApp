@@ -30,9 +30,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.lerp
 import br.com.example.brazookatelas.R
 import br.com.example.brazookatelas.model.Series
+import br.com.example.brazookatelas.sampledata.sampleFilmes
 import br.com.example.brazookatelas.sampledata.sampleSeries
 import br.com.example.brazookatelas.ui.components.items.SerieItemPager
 import br.com.example.brazookatelas.ui.components.items.SerieItemRow
+import br.com.example.brazookatelas.ui.screens.Details.DetailsFilmesActivity
+import br.com.example.brazookatelas.ui.screens.Details.DetailsSeriesActivity
 import br.com.example.brazookatelas.ui.screens.LivrosActivity
 import br.com.example.brazookatelas.ui.screens.SeriesActivity
 import coil.compose.AsyncImage
@@ -70,7 +73,7 @@ fun SeriesRowRecom(
                     top = 8.dp
                 )
                 .fillMaxWidth(),
-            horizontalArrangement = Arrangement.spacedBy(30.dp),
+            horizontalArrangement = Arrangement.spacedBy(16.dp),
             contentPadding = PaddingValues(horizontal = 16.dp)
         ) {
             items(series) { s ->
@@ -164,6 +167,9 @@ fun SerieRowTrendPager(
             Box(
                 Modifier
                     .wrapContentSize()
+                    .clickable { fContext.startActivity(DetailsSeriesActivity.newIntent(fContext, sampleSeries.sortedByDescending{ series ->
+                        series.ano
+                    }.take(5)[page]))}
                     .graphicsLayer {
                         val pageOffset =
                             pagerStateSeries.calculateCurrentOffsetForPageSeries(page).absoluteValue

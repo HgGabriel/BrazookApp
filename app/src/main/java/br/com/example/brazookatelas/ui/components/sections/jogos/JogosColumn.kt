@@ -142,7 +142,7 @@ fun JogosList(title: String = "",
 fun JogosTelaColumn() {
     Column {
         JogosRowTrendPager(title = "Em alta", jogos = sampleJogos.sortedByDescending { jogos->
-            jogos.ano
+            jogos.nota
         }.take(5))
         CategoriesJogos()
         JogosRowRecom(title = "Recomendações", jogos = sampleJogos.sortedBy { jogos ->

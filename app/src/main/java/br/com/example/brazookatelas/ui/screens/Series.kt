@@ -15,7 +15,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import br.com.example.brazookatelas.gradient
 import br.com.example.brazookatelas.sampledata.sampleSectionsSeries
 import br.com.example.brazookatelas.sampledata.sampleSeries
-import br.com.example.brazookatelas.ui.components.sections.Series.SeriesGrid
+import br.com.example.brazookatelas.ui.components.sections.series.SeriesGrid
 import br.com.example.brazookatelas.ui.components.sections.filmes.SeriesColumnRes
 import br.com.example.brazookatelas.ui.theme.BrazookaTelasTheme
 

@@ -1,5 +1,6 @@
 package br.com.example.brazookatelas.model
 
+import java.io.Serializable
 import java.util.*
 
 data class Filmes(
@@ -14,4 +15,4 @@ data class Filmes(
     val nota: Double,
     val poster: String,
     val ano: Int
-)
+): Serializable

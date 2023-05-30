@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.style.TextAlign
@@ -23,6 +24,8 @@ import androidx.compose.ui.unit.sp
 import br.com.example.brazookatelas.R
 import br.com.example.brazookatelas.model.Series
 import br.com.example.brazookatelas.sampledata.sampleSeries
+import br.com.example.brazookatelas.ui.screens.Details.DetailsFilmesActivity
+import br.com.example.brazookatelas.ui.screens.Details.DetailsSeriesActivity
 import coil.compose.AsyncImage
 
 
@@ -31,12 +34,13 @@ fun SeriesItemGrid(
     serie: Series,
     modifier: Modifier = Modifier,
 ) {
-
+    val fContext = LocalContext.current
     Card(
         modifier = Modifier
             .width(containerW)
             .height(300.dp)
-            .padding(4.dp),
+            .padding(4.dp)
+            .clickable { fContext.startActivity(DetailsSeriesActivity.newIntent(fContext, serie)) },
         elevation = 4.dp,
         shape = RoundedCornerShape(8.dp),
         backgroundColor = MaterialTheme.colors.background
@@ -57,7 +61,7 @@ fun SeriesItemGrid(
                 AsyncImage(
                     model = serie.poster,
                     contentDescription = null,
-                    placeholder = painterResource(id = R.drawable.aruanas),
+                    placeholder = painterResource(id = R.drawable.placeholder),
                     modifier = Modifier.size(width = imageW, height = imageH),
                     contentScale = ContentScale.Crop
                 )
@@ -90,8 +94,9 @@ fun SerieItemRow(
     serie: Series,
     modifier: Modifier = Modifier,
 ) {
+    val fContext = LocalContext.current
     Box(modifier = Modifier
-        .clickable { }
+        .clickable { fContext.startActivity(DetailsSeriesActivity.newIntent(fContext, serie)) }
         .width(140.dp)) {
         Column(
             modifier = Modifier.wrapContentHeight(),
@@ -102,7 +107,7 @@ fun SerieItemRow(
                 contentDescription = "Series Image",
                 contentScale = ContentScale.FillBounds,
                 modifier = Modifier.size(width = 140.dp, height = 200.dp),
-                placeholder = painterResource(id = R.drawable.aruanas)
+                placeholder = painterResource(id = R.drawable.placeholder)
             )
             Spacer(modifier = Modifier.height(8.dp))
             Text(
@@ -117,17 +122,19 @@ fun SerieItemRow(
 
 @Composable
 fun SerieItemMore(serie: Series) {
+    val fContext = LocalContext.current
     Card(
         modifier = Modifier
             .height(imageH)
-            .width(imageW),
+            .width(imageW)
+            .clickable { fContext.startActivity(DetailsSeriesActivity.newIntent(fContext, serie)) },
         elevation = 4.dp,
         shape = RoundedCornerShape(4.dp),
     ) {
         AsyncImage(
             model = serie.poster,
             contentDescription = "Capa do filme",
-            placeholder = painterResource(id = R.drawable.aruanas),
+            placeholder = painterResource(id = R.drawable.placeholder),
             modifier = Modifier.size(width = 140.dp, height = 220.dp),
             contentScale = ContentScale.Crop
         )
@@ -140,9 +147,11 @@ fun SerieItemPager(
     serie: Series,
     modifier: Modifier = Modifier,
 ) {
+    val fContext = LocalContext.current
     Surface(
         modifier = Modifier
-            .size(width = 240.dp, height = 385.dp),
+            .size(width = 240.dp, height = 385.dp)
+            .clickable { fContext.startActivity(DetailsSeriesActivity.newIntent(fContext, serie)) },
         shape = RoundedCornerShape(15.dp),
         elevation = 12.dp
     ) {
@@ -155,7 +164,7 @@ fun SerieItemPager(
             AsyncImage(
                 model = serie.poster,
                 contentDescription = "Imagens dos filmes",
-                placeholder = painterResource(id = R.drawable.aruanas),
+                placeholder = painterResource(id = R.drawable.placeholder),
                 modifier = Modifier.width(240.dp)
             )
             Spacer(Modifier.height(4.dp))
@@ -178,11 +187,10 @@ fun SerieCardItem(
     modifier: Modifier = Modifier,
     elevation: Dp = 4.dp,
 ) {
+    val fContext = LocalContext.current
     Card(
         modifier
-            .clickable {
-
-            }
+            .clickable { fContext.startActivity(DetailsSeriesActivity.newIntent(fContext, serie)) }
             .fillMaxWidth()
             .heightIn(150.dp),
         elevation = elevation
@@ -194,7 +202,7 @@ fun SerieCardItem(
                 Modifier
                     .fillMaxWidth()
                     .height(350.dp),
-                placeholder = painterResource(id = R.drawable.aruanas),
+                placeholder = painterResource(id = R.drawable.placeholder),
                 contentScale = ContentScale.Crop
             )
             Row(

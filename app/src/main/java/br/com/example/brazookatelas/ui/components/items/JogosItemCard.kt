@@ -2,6 +2,7 @@ package br.com.example.brazookatelas.ui.components.items
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
@@ -19,6 +20,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.ColorMatrix
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.style.TextAlign
@@ -29,20 +31,23 @@ import androidx.compose.ui.unit.sp
 import br.com.example.brazookatelas.R
 import br.com.example.brazookatelas.model.Jogos
 import br.com.example.brazookatelas.sampledata.sampleJogos
+import br.com.example.brazookatelas.ui.screens.Details.DetailsFilmesActivity
+import br.com.example.brazookatelas.ui.screens.Details.DetailsJogosActivity
 import coil.compose.AsyncImage
 import java.math.BigDecimal
-val notaJogos = BigDecimal((3..5).random()).setScale(2).toDouble()
 @Composable
 fun JogoItemPager(
     jogos: Jogos,
     modifier: Modifier = Modifier,
 ) {
+    val fContext = LocalContext.current
     Surface(
         elevation = 8.dp,
         shape = RoundedCornerShape(16.dp),
         modifier = Modifier
             .wrapContentSize()
-            .size(height = 200.dp, width = 300.dp),
+            .size(height = 200.dp, width = 300.dp)
+            .clickable { fContext.startActivity(DetailsJogosActivity.newIntent(fContext, jogos)) },
 
         ) {
         Box() {
@@ -50,7 +55,7 @@ fun JogoItemPager(
                 model = jogos.capa,
                 contentDescription = "Capa do jogo",
                 contentScale = ContentScale.FillBounds,
-                placeholder = painterResource(id = R.drawable.fobia),
+                placeholder = painterResource(id = R.drawable.placeholder),
                 modifier = Modifier
                     .size(height = 250.dp, width = 350.dp)
                     .blur(
@@ -80,7 +85,7 @@ fun JogoItemPager(
                         model = jogos.capa,
                         contentDescription = "Capa do jogo",
                         contentScale = ContentScale.Crop,
-                        placeholder = painterResource(id = R.drawable.fobia),
+                        placeholder = painterResource(id =R.drawable.placeholder),
                         modifier = Modifier.size(100.dp),
                     )
 
@@ -120,7 +125,7 @@ fun JogoItemPager(
                     Row(verticalAlignment = Alignment.CenterVertically) {
 
                         Text(
-                            text = notaJogos.toString(),
+                            text = "%.1f".format(jogos.nota),
                             style = MaterialTheme.typography.subtitle1,
                             color = Color.LightGray,
                             fontSize = 12.sp
@@ -191,6 +196,7 @@ fun JogoItemPager(
 
 @Composable
 fun JogoItemRecom(jogos: Jogos) {
+    val fContext = LocalContext.current
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         Surface(
             elevation = 8.dp,
@@ -198,12 +204,13 @@ fun JogoItemRecom(jogos: Jogos) {
                 width = 240.dp,
                 height = 360.dp
             )
+                .clickable { fContext.startActivity(DetailsJogosActivity.newIntent(fContext, jogos)) }
         ) {
             Box {
                 AsyncImage(
                     model = jogos.capa,
                     contentDescription = null,
-                    placeholder = painterResource(id = R.drawable.fobia),
+                    placeholder = painterResource(id = R.drawable.placeholder),
                     contentScale = ContentScale.FillBounds,
                     modifier = Modifier
                         .fillMaxSize()
@@ -227,7 +234,7 @@ fun JogoItemRecom(jogos: Jogos) {
                         model = jogos.capa,
                         contentDescription = null,
                         modifier = Modifier.size(120.dp),
-                        placeholder = painterResource(id = R.drawable.fobia),
+                        placeholder = painterResource(id =R.drawable.placeholder),
 
                         )
                 }
@@ -272,8 +279,8 @@ fun JogoItemRecom(jogos: Jogos) {
 
                             Row(verticalAlignment = Alignment.CenterVertically) {
 
-                                Text(text = notaJogos.toString(), fontStyle = FontStyle.Italic)
-                                RatingBar(rating = notaJogos)
+                                Text(text = "%.1f".format(jogos.nota), fontStyle = FontStyle.Italic)
+                                RatingBar(rating = jogos.nota)
                             }
 
                             Text(
@@ -302,12 +309,13 @@ fun JogoItemRecom(jogos: Jogos) {
 
 @Composable
 fun JogoItemList(jogos: Jogos,) {
-
+    val fContext = LocalContext.current
     Surface(
         elevation = 4.dp,
         modifier = Modifier
             .fillMaxWidth()
-            .height(140.dp),
+            .height(140.dp)
+            .clickable { fContext.startActivity(DetailsJogosActivity.newIntent(fContext, jogos)) },
     ) {
         Box(Modifier.background(brush = gradientEscuro)) {
             Row {
@@ -320,7 +328,7 @@ fun JogoItemList(jogos: Jogos,) {
                     AsyncImage(
                         model = jogos.capa,
                         contentDescription = "Capa do Livro",
-                        placeholder = painterResource(id = R.drawable.fobia),
+                        placeholder = painterResource(id = R.drawable.placeholder),
                         modifier = Modifier.size(width = 100.dp, height = 100.dp),
                         contentScale = ContentScale.Crop,
                     )
@@ -363,8 +371,8 @@ fun JogoItemList(jogos: Jogos,) {
                     )
                     Spacer(modifier = Modifier.height(4.dp))
                     Row(verticalAlignment = Alignment.CenterVertically) {
-                        Text(text = notaJogos.toString(), fontStyle = FontStyle.Italic)
-                        RatingBar(rating = notaJogos)
+                        Text(text = "%.1f".format(jogos.nota), fontStyle = FontStyle.Italic)
+                        RatingBar(rating = jogos.nota)
                     }
 
                 }

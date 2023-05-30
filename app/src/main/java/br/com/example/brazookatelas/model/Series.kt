@@ -14,4 +14,4 @@ data class Series(
     val nota: Double,
     val poster: String? = null,
     val ano: Int
-)
+):java.io.Serializable

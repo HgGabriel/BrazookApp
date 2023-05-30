@@ -1,5 +1,6 @@
 package br.com.example.brazookatelas.ui.screens
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -18,12 +19,14 @@ import br.com.example.brazookatelas.ui.theme.BrazookaTelasTheme
 import br.com.example.brazookatelas.sampledata.sampleSectionsFilmes
 import br.com.example.brazookatelas.ui.components.sections.filmes.FilmesColumnRes
 import br.com.example.brazookatelas.ui.components.sections.grid.FilmesGrid
+import br.com.example.brazookatelas.ui.screens.Details.DetailsFilmesActivity
 
 class FilmesActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             BrazookaTelasTheme {
+
                 Box(modifier = Modifier.background(brush = gradient)) {
                     Surface(
                         modifier = Modifier.fillMaxSize(),

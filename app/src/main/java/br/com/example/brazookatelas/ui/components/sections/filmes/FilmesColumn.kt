@@ -127,7 +127,7 @@ fun FilmesColumnRes(
 }
 
 @Composable
-fun FilmesTelaColumn() {
+fun FilmesTelaColumn( onNavigateToDetails: (Filmes) -> Unit = {}) {
     val navControler = rememberNavController()
     Column {
         FilmeRowTrendPager(title = "Em alta", filmes = sampleFilmes.sortedByDescending { filmes ->
@@ -140,9 +140,7 @@ fun FilmesTelaColumn() {
         Spacer(Modifier.height(16.dp))
         FilmesRowRecom(title = "Recomendações", filmes = sampleFilmes.sortedByDescending { filmes ->
             filmes.nota
-        }, onNavigateToDetails = { filmes ->
-            navControler.navigate("${AppRouteName.DetailFilmes}/${filmes.id}")
-        })
+        },onNavigateToDetails = onNavigateToDetails)
         Spacer(Modifier.height(16.dp))
     }
 }

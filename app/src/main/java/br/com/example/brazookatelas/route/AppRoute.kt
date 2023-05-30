@@ -1,10 +1,9 @@
-package br.com.example.brazookatelas
+package br.com.example.brazookatelas.route
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import br.com.example.brazookatelas.route.AppRouteName
 import br.com.example.brazookatelas.sampledata.sampleFilmes
 import br.com.example.brazookatelas.ui.components.sections.filmes.DetailScreenFilmes
 import br.com.example.brazookatelas.ui.screens.FilmesScreen
