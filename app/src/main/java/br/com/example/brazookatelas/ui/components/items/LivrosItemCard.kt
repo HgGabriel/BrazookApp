@@ -1,6 +1,7 @@
 package br.com.example.brazookatelas.ui.components.items
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme
@@ -13,6 +14,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.style.TextAlign
@@ -23,6 +25,8 @@ import androidx.compose.ui.unit.sp
 import br.com.example.brazookatelas.R
 import br.com.example.brazookatelas.model.Livros
 import br.com.example.brazookatelas.sampledata.sampleLivros
+import br.com.example.brazookatelas.ui.screens.Details.DetailsJogosActivity
+import br.com.example.brazookatelas.ui.screens.Details.DetailsLivrosActivity
 import coil.compose.AsyncImage
 import java.math.BigDecimal
 
@@ -45,10 +49,11 @@ val gradientEscuro = Brush.linearGradient(
 fun LivroItemPager(
     livros: Livros,
 ) {
-
+val fContext = LocalContext.current
     Surface(
         shape = RoundedCornerShape(16.dp), elevation = 8.dp,
-        modifier = Modifier.size(height = 240.dp, width = 360.dp)
+        modifier = Modifier.size(height = 240.dp, width = 360.dp) .clickable { fContext.startActivity(
+            DetailsLivrosActivity.newIntent(fContext, livros)) }
     ) {
         Box(Modifier.background(brush = gradientAmarelo)) {
             Row {
@@ -145,11 +150,13 @@ fun LivroItemRow(
     livros: Livros,
     modifier: Modifier = Modifier,
 ) {
+    val fContext = LocalContext.current
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         Surface(
             elevation = 8.dp,
             shape = RoundedCornerShape(6.dp),
-            modifier = Modifier.size(width = 140.dp, height = 200.dp)
+            modifier = Modifier.size(width = 140.dp, height = 200.dp) .clickable { fContext.startActivity(
+                DetailsLivrosActivity.newIntent(fContext, livros)) }
         ) {
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally
@@ -182,11 +189,14 @@ fun LivroItemRow(
 fun LivroItemList(
     livros: Livros,
 ) {
+    val fContext = LocalContext.current
     Surface(
         elevation = 4.dp,
         modifier = Modifier
             .fillMaxWidth()
-            .height(140.dp),
+            .height(140.dp)
+            .clickable { fContext.startActivity(
+                DetailsLivrosActivity.newIntent(fContext, livros)) },
     ) {
         Box(Modifier.background(brush = gradientEscuro)) {
             Row {
@@ -195,6 +205,7 @@ fun LivroItemList(
                         .wrapContentSize()
                         .padding(top = 12.dp, start = 12.dp, bottom = 12.dp, end = 6.dp)
                         .align(Alignment.CenterVertically)
+
                 ) {
                     AsyncImage(
                         model = livros.capa,
@@ -242,9 +253,8 @@ fun LivroItemList(
                     )
                     Spacer(modifier = Modifier.height(4.dp))
                     Row(verticalAlignment = Alignment.CenterVertically) {
-                        val notaLivros = BigDecimal((3..5).random()).setScale(2).toDouble()
-                        Text(text = notaLivros.toString(), fontStyle = FontStyle.Italic)
-                        RatingBar(rating = notaLivros)
+                        Text(text = "%.1f".format(livros.nota), fontStyle = FontStyle.Italic)
+                        RatingBar(rating = livros.nota)
                     }
 
                 }

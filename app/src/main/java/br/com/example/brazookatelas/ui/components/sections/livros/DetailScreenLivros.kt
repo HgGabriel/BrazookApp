@@ -1,8 +1,10 @@
-package br.com.example.brazookatelas.ui.components.sections.jogos
+package br.com.example.brazookatelas.ui.components.sections.livros
 
 import androidx.activity.compose.LocalOnBackPressedDispatcherOwner
 import androidx.compose.foundation.background
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
@@ -25,16 +27,18 @@ import androidx.compose.ui.unit.sp
 import br.com.example.brazookatelas.R
 import br.com.example.brazookatelas.gradient
 import br.com.example.brazookatelas.model.Jogos
+import br.com.example.brazookatelas.model.Livros
 import br.com.example.brazookatelas.model.Series
 import br.com.example.brazookatelas.sampledata.sampleJogos
+import br.com.example.brazookatelas.sampledata.sampleLivros
 import br.com.example.brazookatelas.sampledata.sampleSeries
 import br.com.example.brazookatelas.ui.components.sections.filmes.MovieInfo
 import coil.compose.AsyncImage
 
 
 @Composable
-fun DetailScreenJogos(
-    jogos: Jogos,
+fun DetailScreenLivros(
+    livros: Livros,
 ) {
     val onBackPressedDispatcher = LocalOnBackPressedDispatcherOwner.current?.onBackPressedDispatcher
     Box(modifier = Modifier.background(brush = gradient)) {
@@ -80,50 +84,71 @@ fun DetailScreenJogos(
                     }
                     Column(
                         modifier = Modifier
-                            .wrapContentHeight()
-                            .padding(horizontal = 24.dp),
+                            .wrapContentHeight(),
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         AsyncImage(
-                            model = jogos.capa,
+                            model = livros.capa,
                             contentDescription = "Movie Image",
                             placeholder = painterResource(id = R.drawable.placeholder),
                             contentScale = ContentScale.FillBounds,
                             modifier = Modifier
-                                .size(200.dp)
+                                .height(220.dp)
+                                .width(150.dp)
                                 .clip(RoundedCornerShape(16.dp))
                         )
                         Spacer(modifier = Modifier.height(24.dp))
 
                         Text(
-                            jogos.nome, style = MaterialTheme.typography.h5,
+                            livros.nome, style = MaterialTheme.typography.h5,
                             modifier = Modifier.padding(
                                 start = 24.dp, end = 24.dp, top = 8.dp, bottom = 24.dp
                             )
                         )
 
-                        Row(
+                        LazyRow(
                             modifier = Modifier
                                 .fillMaxWidth(),
                             verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.SpaceAround
+                            horizontalArrangement = Arrangement.spacedBy(16.dp),
+                            contentPadding = PaddingValues(horizontal = 16.dp)
                         ) {
 
-                            MovieInfo(
-                                imageVector = Icons.Default.Games,
-                                title = "Gênero",
-                                value = jogos.genero
-                            )
-                            MovieInfo(
-                                imageVector = Icons.Default.Face,
-                                title = "Classificação",
-                                value = jogos.classificacao
-                            )
-                            MovieInfo(
-                                imageVector = Icons.Default.Star,
-                                title = "Nota",
-                                value = "%.1f/5.0".format(jogos.nota)
-                            )
+                            item {
+                                MovieInfo(
+                                    imageVector = Icons.Default.Book,
+                                    title = "Gênero",
+                                    value = livros.genero
+                                )
+                            }
+
+                            item {
+                                MovieInfo(
+                                    imageVector = Icons.Default.Face,
+                                    title = "Público",
+                                    value = livros.alvo
+                                )
+                            }
+
+                            item {
+                                MovieInfo(
+                                    imageVector = Icons.Default.Star,
+                                    title = "Nota",
+                                    value = "%.1f/5.0".format(livros.nota)
+                                )
+                            }
+
+                            item {
+                                MovieInfo(
+                                    imageVector = Icons.Default.LibraryBooks,
+                                    title = "Páginas",
+                                    value = livros.paginas.toString()
+                                )
+                            }
+
+
+
+
                         }
                     }
 
@@ -135,7 +160,7 @@ fun DetailScreenJogos(
                         modifier = Modifier.padding(horizontal = 24.dp, vertical = 10.dp)
                     )
                     Text(
-                        jogos.sinopse,
+                        livros.sinopse,
                         style = MaterialTheme.typography.body2,
                         fontSize = 18.sp,
                         textAlign = TextAlign.Justify,
@@ -145,22 +170,22 @@ fun DetailScreenJogos(
                     )
 
                     Text(
-                        "Estudio", style = MaterialTheme.typography.h6, fontSize = 18.sp,
+                        "Autor(a)", style = MaterialTheme.typography.h6, fontSize = 18.sp,
                         modifier = Modifier.padding(horizontal = 24.dp, vertical = 16.dp)
                     )
                     Text(
-                        jogos.estudio, style = MaterialTheme.typography.body2, fontSize = 14.sp,
+                        livros.autor, style = MaterialTheme.typography.body2, fontSize = 14.sp,
                         modifier = Modifier.padding(
                             horizontal = 24.dp
                         )
                     )
 
                     Text(
-                        "Plataformas", style = MaterialTheme.typography.h6, fontSize = 18.sp,
+                        "Número de Páginas", style = MaterialTheme.typography.h6, fontSize = 18.sp,
                         modifier = Modifier.padding(horizontal = 24.dp, vertical = 16.dp)
                     )
                     Text(
-                        jogos.plataformas, style = MaterialTheme.typography.body2, fontSize = 14.sp,
+                        "${livros.paginas}", style = MaterialTheme.typography.body2, fontSize = 14.sp,
                         modifier = Modifier.padding(
                             horizontal = 24.dp
                         )
@@ -177,6 +202,6 @@ fun DetailScreenJogos(
 @Preview(showBackground = true, showSystemUi = true)
 
 @Composable
-fun DetailScreenJogosPreview() {
-    DetailScreenJogos(jogos = sampleJogos[1])
+fun DetailScreenLivrosPreview() {
+    DetailScreenLivros(livros = sampleLivros[1])
 }

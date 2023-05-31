@@ -21,9 +21,11 @@ import androidx.compose.ui.graphics.Color.Companion.Yellow
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.rememberNavController
+import br.com.example.brazookatelas.R
 import br.com.example.brazookatelas.gradient
 import br.com.example.brazookatelas.model.Filmes
 import coil.compose.AsyncImage
@@ -84,6 +86,7 @@ fun DetailScreenFilmes(
                         model = filmes.poster,
                         contentDescription = "Movie Image",
                         contentScale = ContentScale.FillBounds,
+                        placeholder = painterResource(id = R.drawable.placeholder),
                         modifier = Modifier
                             .weight(0.7f)
                             .height(350.dp)
@@ -151,8 +154,7 @@ fun MovieInfo(
             .border(width = 1.dp, color = Gray, shape = RoundedCornerShape(16.dp))
             .clip(RoundedCornerShape(16.dp))
             .padding(12.dp)
-            .fillMaxWidth()
-            .wrapContentHeight(),
+            .size(80.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
     ) {

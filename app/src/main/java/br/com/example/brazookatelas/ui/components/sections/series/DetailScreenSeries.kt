@@ -8,17 +8,17 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material.icons.filled.Face
-import androidx.compose.material.icons.filled.Star
-import androidx.compose.material.icons.filled.Videocam
+import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.Yellow
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import br.com.example.brazookatelas.R
 import br.com.example.brazookatelas.gradient
 import br.com.example.brazookatelas.model.Series
 import br.com.example.brazookatelas.ui.components.sections.filmes.MovieInfo
@@ -40,7 +40,7 @@ fun DetailScreenSeries(
                         .wrapContentWidth()
                         .height(56.dp),
                     colors = ButtonDefaults.buttonColors(
-                        backgroundColor = Yellow
+                        backgroundColor = Color(0xfffbc35b)
                     ),
                     shape = RoundedCornerShape(32.dp),
                     onClick = {
@@ -80,6 +80,7 @@ fun DetailScreenSeries(
                         model = series.poster,
                         contentDescription = "Movie Image",
                         contentScale = ContentScale.FillBounds,
+                        placeholder = painterResource(id = R.drawable.placeholder),
                         modifier = Modifier
                             .weight(0.7f)
                             .height(350.dp)
@@ -95,7 +96,7 @@ fun DetailScreenSeries(
                     ) {
 
                         MovieInfo(
-                            imageVector = Icons.Default.Videocam,
+                            imageVector = Icons.Default.Tv,
                             title = "Gênero",
                             value = series.genero
                         )

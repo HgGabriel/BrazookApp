@@ -210,7 +210,7 @@ fun FilmeRowTrendPager(
                         AsyncImage(
                             model = images[page],
                             contentDescription = "Imagens dos filmes",
-                            placeholder = painterResource(id = R.drawable.mundoluna),
+                            placeholder = painterResource(id = R.drawable.placeholder),
                             modifier = Modifier.width(240.dp),
                             contentScale = ContentScale.FillBounds
                         )

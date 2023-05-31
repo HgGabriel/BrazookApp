@@ -146,7 +146,7 @@ fun JogosTelaColumn() {
         }.take(5))
         CategoriesJogos()
         JogosRowRecom(title = "Recomendações", jogos = sampleJogos.sortedBy { jogos ->
-            jogos.ano
+            jogos.nota
         }.take(9))
     }
 }
