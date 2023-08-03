@@ -1,7 +1,6 @@
-<h1 align="center"> Brazooka </h1> <br>
 <p align="center">
   <a href="https://etecspgov-my.sharepoint.com/personal/hiago_oliveira22_etec_sp_gov_br/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fhiago%5Foliveira22%5Fetec%5Fsp%5Fgov%5Fbr%2FDocuments%2FBrazooka%2FBrazookaApp%2Eapk&parent=%2Fpersonal%2Fhiago%5Foliveira22%5Fetec%5Fsp%5Fgov%5Fbr%2FDocuments%2FBrazooka&ga=1">
-    <img alt="logo" title="Brazooka" src="https://i.imgur.com/JBAxhTk.png" width="450">
+    <img alt="logo" title="Brazooka" src="https://i.imgur.com/JBAxhTk.png">
   </a>
 </p>
 
@@ -9,8 +8,13 @@
   Brazilian entertainment in the palm of your hand. Built with Jetpack Compose
 </p>
 
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+<h6 align="center"> You can download the apk here </h4>
+<p align="center">
+  <a href="https://etecspgov-my.sharepoint.com/personal/hiago_oliveira22_etec_sp_gov_br/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fhiago%5Foliveira22%5Fetec%5Fsp%5Fgov%5Fbr%2FDocuments%2FBrazooka%2FBrazookaApp%2Eapk&parent=%2Fpersonal%2Fhiago%5Foliveira22%5Fetec%5Fsp%5Fgov%5Fbr%2FDocuments%2FBrazooka&ga=1">
+      <img src="https://www.pngmart.com/files/10/Download-Now-Button-PNG-File.png" width="150">
+  </a>
+</p>
+
 ## Table of Contents
 
 - [Introduction](#introduction)
@@ -29,24 +33,29 @@
   <img src = "https://i.imgur.com/m9Jk0wV.png">
 </p>
 
-## Build Process
+## How it was made
 
-The Brazooka app was built 
+The Brazooka app was made with the following technologies:
 
-- Follow the [React Native Guide](https://facebook.github.io/react-native/docs/getting-started.html) for getting started building a project with native code. **A Mac is required if you wish to develop for iOS.**
-- Clone or download the repo
-- `yarn` to install dependencies
-- `yarn run link` to link react-native dependencies
-- `yarn start:ios` to start the packager and run the app in the iOS simulator (`yarn start:ios:logger` will boot the application with [redux-logger](<https://github.com/evgenyrodionov/redux-logger>))
-- `yarn start:android` to start the packager and run the app in the the Android device/emulator (`yarn start:android:logger` will boot the application with [redux-logger](https://github.com/evgenyrodionov/redux-logger))
+<p align="center" >
+  <img src = "https://img.shields.io/badge/Kotlin-0095D5?&style=for-the-badge&logo=kotlin&logoColor=white">
+  <img src = "https://img.shields.io/badge/Android_Studio-3DDC84?style=for-the-badge&logo=android-studio&logoColor=white">
+  <img src = "https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white">
+  <img src = "https://img.shields.io/badge/json-5E5C5C?style=for-the-badge&logo=json&logoColor=white">
+  <img src = "https://img.shields.io/badge/material%20design-757575?style=for-the-badge&logo=material%20design&logoColor=white">
+  <img src ="https://img.shields.io/badge/Material%20UI-007FFF?style=for-the-badge&logo=mui&logoColor=white">
+</p>
 
-Please take a look at the [contributing guidelines](./CONTRIBUTING.md) for a detailed process on how to build your application as well as troubleshooting information.
+<p align="center" height="50">
+ <img src = "https://miro.medium.com/v2/resize:fit:1358/1*tDFPLaEDlaW5dtsfv4sd0A.png">
+</p>
 
-**Development Keys**: The `CLIENT_ID` and `CLIENT_SECRET` in `api/index.js` are for development purposes and do not represent the actual application keys. Feel free to use them or use a new set of keys by creating an [OAuth application](https://github.com/settings/applications/new) of your own. Set the "Authorization callback URL" to `gitpoint://welcome`.
+ `Jetpack Compose was used during the whole developing process of the app, using concepts such as state holders, composables, lazy layouts and etc.`
+
 
 ## Features
 
-A few of the things you can do with Brazooka:
+A few things you can do with Brazooka:
 
 * Search for brazilian Movies/Tv Shows/Books/Games
 * Search for specific genres and titles that you like 
@@ -63,8 +72,17 @@ A few of the things you can do with Brazooka:
 
 ## Contributors
 
-Shoutout to my friends who studied with me and helped me built the app, without them I wouldn't be able to finish this project in only 3 months.  
+  Here are the list of the people who helped me with feedback to improve the app UI/UX while I was developing:
+    
+  * JellyJinx
+  * Vinni Hashirama
+  * Pk (Patriky)
+  * DuplicateUser3
+  * Sabonete01
+  * Vinícius Silva Galindo
+  * Polly Rocha
+  * Paulo Roberto
 
 ## Acknowledgments
 
-Thanks to [JetBrains](https://www.jetbrains.com) for supporting us with a [free Open Source License](https://www.jetbrains.com/buy/opensource).
+Shoutout to my friends who studied with me and helped me built the app, without them I wouldn't be able to finish this project in only 3 months.
