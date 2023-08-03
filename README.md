@@ -46,18 +46,13 @@ Please take a look at the [contributing guidelines](./CONTRIBUTING.md) for a det
 
 ## Features
 
-A few of the things you can do with GitPoint:
+A few of the things you can do with Brazooka:
 
-* View user activity feed
-* Communicate on your issue and pull request conversations
-* Close or lock issues
-* Apply labels and assignees
-* Review and merge pull requests
-* Create new issues
-* Star, watch and fork repositories
-* Control your unread and participating notifications
-* Easily search for any user or repository
-
+* Search for brazilian Movies/Tv Shows/Books/Games
+* Search for specific genres and titles that you like 
+* Read descriptions about what you choose
+* Get to know what is new and what is trending in Brazil
+  
 <p align="center">
   <img src = "https://i.imgur.com/DLStZou.png" width=700>
 </p>
@@ -68,7 +63,7 @@ A few of the things you can do with GitPoint:
 
 ## Contributors
 
-This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification and is brought to you by these [awesome contributors](./CONTRIBUTORS.md).
+Shoutout to my friends who studied with me and helped me built the app, without them I wouldn't be able to finish this project in only 3 months.  
 
 ## Acknowledgments
 
