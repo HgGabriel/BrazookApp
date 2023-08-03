@@ -18,7 +18,7 @@
 ## Table of Contents
 
 - [Introduction](#introduction)
-- [Build Process](#build-process)
+- [How it was made](#how-it-was-made)
 - [Features](#features)
 - [Contributors](#contributors)
 - [Acknowledgments](#acknowledgments)
