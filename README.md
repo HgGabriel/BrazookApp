@@ -75,6 +75,7 @@ A few things you can do with Brazooka:
   Here are the list of the people who helped me with feedback to improve the app UI/UX while I was developing:
     
   * JellyJinx
+  * Vinícius Flores **Infran**
   * Vinni Hashirama
   * Pk (Patriky)
   * DuplicateUser3
