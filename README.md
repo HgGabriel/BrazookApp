@@ -10,7 +10,7 @@
 
 <h6 align="center"> You can download the apk here </h4>
 <p align="center">
-  <a href="https://etecspgov-my.sharepoint.com/personal/hiago_oliveira22_etec_sp_gov_br/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fhiago%5Foliveira22%5Fetec%5Fsp%5Fgov%5Fbr%2FDocuments%2FBrazooka%2FBrazookaApp%2Eapk&parent=%2Fpersonal%2Fhiago%5Foliveira22%5Fetec%5Fsp%5Fgov%5Fbr%2FDocuments%2FBrazooka&ga=1">
+  <a href="https://www.mediafire.com/file/0etotxlbjlo7poz/BrazookaApp.apk/file">
       <img src="https://www.pngmart.com/files/10/Download-Now-Button-PNG-File.png" width="150">
   </a>
 </p>
