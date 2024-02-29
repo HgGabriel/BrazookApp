@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://etecspgov-my.sharepoint.com/personal/hiago_oliveira22_etec_sp_gov_br/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fhiago%5Foliveira22%5Fetec%5Fsp%5Fgov%5Fbr%2FDocuments%2FBrazooka%2FBrazookaApp%2Eapk&parent=%2Fpersonal%2Fhiago%5Foliveira22%5Fetec%5Fsp%5Fgov%5Fbr%2FDocuments%2FBrazooka&ga=1">
+  <a href="https://download1324.mediafire.com/78msox75cigg0ZWlGwCuYS4okLvzU2p4VMvjq3viG3Ekf8oHGB0QPj707ue3J8Ez2wEZ_Bwi2beZvZwj2f9PYOZKodwIPwIQx7R0d1wEUD2kEcRvn96myKdqCPxVC8hTIaOdnDlmzY58KlPnQknfMrbU56bnhrQTvtE9jfl8ibmH/0etotxlbjlo7poz/BrazookaApp.apk">
     <img alt="logo" title="Brazooka" src="https://i.imgur.com/JBAxhTk.png">
   </a>
 </p>
@@ -10,7 +10,7 @@
 
 <h6 align="center"> You can download the apk here </h4>
 <p align="center">
-  <a href="https://www.mediafire.com/file/0etotxlbjlo7poz/BrazookaApp.apk/file">
+  <a href="https://download1324.mediafire.com/78msox75cigg0ZWlGwCuYS4okLvzU2p4VMvjq3viG3Ekf8oHGB0QPj707ue3J8Ez2wEZ_Bwi2beZvZwj2f9PYOZKodwIPwIQx7R0d1wEUD2kEcRvn96myKdqCPxVC8hTIaOdnDlmzY58KlPnQknfMrbU56bnhrQTvtE9jfl8ibmH/0etotxlbjlo7poz/BrazookaApp.apk">
       <img src="https://www.pngmart.com/files/10/Download-Now-Button-PNG-File.png" width="150">
   </a>
 </p>
