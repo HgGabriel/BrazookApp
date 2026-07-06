@@ -25,53 +25,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ui.screens.FilmesActivity"
-            android:exported="true"
-            android:windowSoftInputMode="adjustResize">
 
-        </activity>
-        <activity
-            android:name=".ui.screens.LivrosActivity"
-            android:exported="true"
-            android:windowSoftInputMode="adjustResize">
-
-        </activity>
-        <activity
-            android:name=".ui.screens.SeriesActivity"
-            android:exported="true"
-            android:windowSoftInputMode="adjustResize">
-
-        </activity>
-        <activity
-            android:name=".ui.screens.JogosActivity"
-            android:exported="true"
-            android:windowSoftInputMode="adjustResize">
-
-        </activity>
-        <activity
-            android:name=".ui.screens.Details.DetailsFilmesActivity"
-            android:exported="true"
-            android:windowSoftInputMode="adjustResize">
-        </activity>
-
-        <activity
-            android:name=".ui.screens.Details.DetailsSeriesActivity"
-            android:exported="true"
-            android:windowSoftInputMode="adjustResize">
-        </activity>
-
-        <activity
-            android:name=".ui.screens.Details.DetailsJogosActivity"
-            android:exported="true"
-            android:windowSoftInputMode="adjustResize">
-        </activity>
-
-        <activity
-            android:name=".ui.screens.Details.DetailsLivrosActivity"
-            android:exported="true"
-            android:windowSoftInputMode="adjustResize">
-        </activity>
     </application>
 
 </manifest>
