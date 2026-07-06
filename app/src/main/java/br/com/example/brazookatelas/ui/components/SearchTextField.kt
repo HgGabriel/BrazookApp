@@ -1,20 +1,18 @@
+@file:OptIn(ExperimentalMaterial3Api::class)
 package br.com.example.brazookatelas.ui.components
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Icon
-import androidx.compose.material.OutlinedTextField
-import androidx.compose.material.Text
-import androidx.compose.material.TextFieldDefaults
+import androidx.compose.material3.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Color.Companion.Gray
-import androidx.compose.ui.graphics.Color.Companion.Green
-import androidx.compose.ui.graphics.Color.Companion.Yellow
 import androidx.compose.ui.unit.dp
 
 @Composable
@@ -22,29 +20,48 @@ fun SearchTextField(
     searchText: String,
     onSearchChange: (String) -> Unit,
 ) {
-    OutlinedTextField(
+    TextField(
         value = searchText,
         onValueChange = { newValue ->
             onSearchChange(newValue)
         },
-        Modifier
-            .padding(16.dp)
+        modifier = Modifier
+            .padding(horizontal = 16.dp, vertical = 8.dp)
             .fillMaxWidth(),
-        colors = TextFieldDefaults.outlinedTextFieldColors(
-            focusedBorderColor = Green,
-            unfocusedBorderColor = Color(0xff004618)
+        colors = TextFieldDefaults.textFieldColors(
+            containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.7f),
+            focusedIndicatorColor = MaterialTheme.colorScheme.primary,
+            unfocusedIndicatorColor = MaterialTheme.colorScheme.outline.copy(alpha = 0.0f),
+            focusedLeadingIconColor = MaterialTheme.colorScheme.primary,
+            unfocusedLeadingIconColor = MaterialTheme.colorScheme.onSurfaceVariant,
+            placeholderColor = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.6f),
+            cursorColor = MaterialTheme.colorScheme.primary
         ),
-        shape = RoundedCornerShape(percent = 100),
+        shape = RoundedCornerShape(percent = 50),
         leadingIcon = {
-            Icon(imageVector = Icons.Default.Search, contentDescription = "Ícone de Busca")
+            Icon(
+                imageVector = Icons.Default.Search,
+                contentDescription = "Buscar"
+            )
         },
-        label = {
-            Text(text = "Pesquisar")
+        trailingIcon = {
+            AnimatedVisibility(
+                visible = searchText.isNotEmpty(),
+                enter = fadeIn(),
+                exit = fadeOut()
+            ) {
+                IconButton(onClick = { onSearchChange("") }) {
+                    Icon(
+                        imageVector = Icons.Default.Close,
+                        contentDescription = "Limpar busca",
+                        tint = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
+            }
         },
         placeholder = {
             Text(text = "O que você procura?")
         },
         singleLine = true
     )
-
 }
