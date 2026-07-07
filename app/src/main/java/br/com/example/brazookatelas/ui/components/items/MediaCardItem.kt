@@ -25,6 +25,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.graphics.vector.ImageVector
 import br.com.example.brazookatelas.R
 import br.com.example.brazookatelas.model.MediaItem
 import br.com.example.brazookatelas.ui.theme.StarGold
@@ -34,7 +35,8 @@ import br.com.example.brazookatelas.ui.components.BrazookImage
 fun MediaItemGridCard(
     item: MediaItem,
     onClick: () -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    detailsIcon: ImageVector? = null
 ) {
     // Scale-feedback: 0.96 ao pressionar, volta com spring animation
     val interactionSource = remember { MutableInteractionSource() }
@@ -123,14 +125,27 @@ fun MediaItemGridCard(
                     )
                     val infoText = item.detailsText ?: item.subTitle
                     if (!infoText.isNullOrBlank()) {
-                        Text(
-                            text = infoText,
-                            style = MaterialTheme.typography.labelSmall,
-                            maxLines = 1,
-                            overflow = TextOverflow.Ellipsis,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
                             modifier = Modifier.padding(top = 2.dp)
-                        )
+                        ) {
+                            if (detailsIcon != null) {
+                                Icon(
+                                    imageVector = detailsIcon,
+                                    contentDescription = null,
+                                    tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                                    modifier = Modifier.size(12.dp)
+                                )
+                                Spacer(modifier = Modifier.width(3.dp))
+                            }
+                            Text(
+                                text = infoText,
+                                style = MaterialTheme.typography.labelSmall,
+                                maxLines = 1,
+                                overflow = TextOverflow.Ellipsis,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                            )
+                        }
                     }
                 }
             }

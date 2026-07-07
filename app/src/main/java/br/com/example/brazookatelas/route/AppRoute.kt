@@ -53,19 +53,43 @@ object AppRoute {
                 val mediaId = backStackEntry.arguments?.getString("mediaId")
 
                 // Lógica de busca temporária a partir dos samples locais
-                val mediaItem = when (mediaType) {
-                    "filme" -> sampleFilmes.find { it.id == mediaId }
-                    "serie" -> sampleSeries.find { it.id == mediaId }
-                    "livro" -> sampleLivros.find { it.id == mediaId }
-                    "jogo" -> sampleJogos.find { it.id == mediaId }
-                    else -> null
-                }
-
-                if (mediaItem != null) {
-                    MediaDetailScreen(
-                        item = mediaItem,
-                        onBackClick = { navController.popBackStack() }
-                    )
+                when (mediaType) {
+                    "filme" -> {
+                        val filme = sampleFilmes.find { it.id == mediaId }
+                        if (filme != null) {
+                            FilmeDetailScreen(
+                                filme = filme,
+                                onBackClick = { navController.popBackStack() }
+                            )
+                        }
+                    }
+                    "serie" -> {
+                        val serie = sampleSeries.find { it.id == mediaId }
+                        if (serie != null) {
+                            SeriesDetailScreen(
+                                serie = serie,
+                                onBackClick = { navController.popBackStack() }
+                            )
+                        }
+                    }
+                    "livro" -> {
+                        val livro = sampleLivros.find { it.id == mediaId }
+                        if (livro != null) {
+                            LivrosDetailScreen(
+                                livro = livro,
+                                onBackClick = { navController.popBackStack() }
+                            )
+                        }
+                    }
+                    "jogo" -> {
+                        val jogo = sampleJogos.find { it.id == mediaId }
+                        if (jogo != null) {
+                            JogoDetailScreen(
+                                jogo = jogo,
+                                onBackClick = { navController.popBackStack() }
+                            )
+                        }
+                    }
                 }
             }
         }

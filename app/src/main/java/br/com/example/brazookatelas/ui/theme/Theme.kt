@@ -24,6 +24,39 @@ val LocalBackgroundGradient = staticCompositionLocalOf<List<Color>> {
     emptyList()
 }
 
+/** Acento semântico de uma categoria (Filmes, Séries, Livros, Jogos), com seu par de contraste. */
+data class CategoryAccent(val color: Color, val onColor: Color)
+
+// CompositionLocal para expor o acento de categoria da tela atual (ex.: dourado de Filmes)
+// sem hardcodar cores dentro dos componentes — cada *Screen provê o valor correto no topo da árvore.
+val LocalCategoryAccent = staticCompositionLocalOf {
+    CategoryAccent(Color.Unspecified, Color.Unspecified)
+}
+
+/** Acento violeta de Séries — par claro/escuro dedicado, pois não existe token equivalente no colorScheme base. */
+@Composable
+fun seriesAccent(): CategoryAccent = if (isSystemInDarkTheme()) {
+    CategoryAccent(SeriesAccentDark, SeriesAccentOnDark)
+} else {
+    CategoryAccent(SeriesAccentLight, SeriesAccentOnLight)
+}
+
+/** Acento terracota de Livros — par claro/escuro dedicado, pois não existe token equivalente no colorScheme base. */
+@Composable
+fun livrosAccent(): CategoryAccent = if (isSystemInDarkTheme()) {
+    CategoryAccent(LivrosAccentDark, LivrosAccentOnDark)
+} else {
+    CategoryAccent(LivrosAccentLight, LivrosAccentOnLight)
+}
+
+/** Tom de madeira da prateleira física (`VirtualShelf`) de Livros. */
+@Composable
+fun shelfWoodColor(): Color = if (isSystemInDarkTheme()) ShelfWoodDark else ShelfWoodLight
+
+/** Sombra projetada sob a prateleira física (`VirtualShelf`) de Livros. */
+@Composable
+fun shelfShadowColor(): Color = if (isSystemInDarkTheme()) ShelfShadowDark else ShelfShadowLight
+
 // ═══════════════════════════════════════════════════════════════════════
 // ANIMATION TOKENS — Durações e easings consistentes em todo o app
 // ═══════════════════════════════════════════════════════════════════════
@@ -128,15 +161,14 @@ fun BrazookaTelasTheme(
     if (!view.isInEditMode) {
         SideEffect {
             val window = (view.context as Activity).window
-            // Tornamos a barra de status transparente para que o gradiente da MainActivity apareça sob ela
-            window.statusBarColor = Color.Transparent.toArgb()
+            // Usa a cor de fundo apropriada da superfície
+            window.statusBarColor = if (darkTheme) DarkBackground.toArgb() else LightBackground.toArgb()
             window.navigationBarColor = colorScheme.surface.toArgb()
 
             val insetsController = WindowCompat.getInsetsController(window, view)
-            // Se for tema claro (!darkTheme), os ícones da barra de status devem ser escuros para contraste
-            insetsController.isAppearanceLightStatusBars = !darkTheme
-            // Ícones escuros na barra de navegação no tema claro
-            insetsController.isAppearanceLightNavigationBars = !darkTheme
+            // Em tema escuro, ícones devem ser claros; em tema claro, escuros
+            insetsController?.isAppearanceLightStatusBars = darkTheme
+            insetsController?.isAppearanceLightNavigationBars = darkTheme
         }
     }
 

@@ -11,9 +11,13 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Star
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -30,6 +34,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.lerp
 import br.com.example.brazookatelas.R
 import br.com.example.brazookatelas.model.MediaItem
+import br.com.example.brazookatelas.ui.theme.LocalCategoryAccent
 import br.com.example.brazookatelas.ui.theme.OverlayTextPrimary
 import br.com.example.brazookatelas.ui.theme.OverlayTextSecondary
 import br.com.example.brazookatelas.ui.components.BrazookImage
@@ -39,7 +44,8 @@ import kotlin.math.absoluteValue
 fun HeroPager(
     items: List<MediaItem>,
     onItemClick: (MediaItem) -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    badgeLabel: String? = null
 ) {
     if (items.isEmpty()) return
 
@@ -50,7 +56,9 @@ fun HeroPager(
             pageCount = items.size,
             state = pagerState,
             contentPadding = PaddingValues(horizontal = 48.dp),
-            modifier = Modifier.height(320.dp)
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(400.dp)
         ) { page ->
             val item = items[page]
             Box(
@@ -59,7 +67,7 @@ fun HeroPager(
                     .graphicsLayer {
                         val pageOffset = ((pagerState.currentPage - page) + pagerState.currentPageOffsetFraction).absoluteValue
                         val scale = lerp(
-                            start = 0.85f,
+                            start = 0.90f,
                             stop = 1.0f,
                             fraction = 1.0f - pageOffset.coerceIn(0.0f, 1.0f)
                         )
@@ -102,6 +110,36 @@ fun HeroPager(
                                     )
                                 )
                         )
+
+                        // Badge de destaque (opcional, definida por categoria)
+                        if (badgeLabel != null) {
+                            val accent = LocalCategoryAccent.current
+                            Surface(
+                                color = accent.color.copy(alpha = 0.85f),
+                                shape = RoundedCornerShape(50),
+                                modifier = Modifier
+                                    .align(Alignment.TopStart)
+                                    .padding(16.dp)
+                            ) {
+                                Row(
+                                    verticalAlignment = Alignment.CenterVertically,
+                                    modifier = Modifier.padding(horizontal = 10.dp, vertical = 5.dp)
+                                ) {
+                                    Icon(
+                                        imageVector = Icons.Rounded.Star,
+                                        contentDescription = null,
+                                        tint = accent.onColor,
+                                        modifier = Modifier.size(14.dp)
+                                    )
+                                    Spacer(modifier = Modifier.width(4.dp))
+                                    Text(
+                                        text = badgeLabel,
+                                        style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.Bold),
+                                        color = accent.onColor
+                                    )
+                                }
+                            }
+                        }
 
                         // Textos Informativos
                         Column(

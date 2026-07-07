@@ -127,3 +127,86 @@ val GlassSurfaceLight = Color(0x33FFFFFF)   // 20% white
 val GlassSurfaceDark = Color(0x33111A15)    // 20% dark surface
 val GlassBorderLight = Color(0x55FFFFFF)    // 33% white
 val GlassBorderDark = Color(0x553B4841)     // 33% outline dark
+
+// ═══════════════════════════════════════════════════════════════════════
+// CLASSIFICAÇÃO INDICATIVA (ClassInd) — fallback textual quando o
+// pictograma oficial (AgeRatingBadge) não está disponível para a categoria
+// ═══════════════════════════════════════════════════════════════════════
+
+val ClassIndLivre = Color(0xFF4CAF50)
+val ClassInd10 = Color(0xFF03A9F4)
+val ClassInd12 = Color(0xFFFFEB3B)
+val ClassInd14 = Color(0xFFFF9800)
+val ClassInd16 = Color(0xFFF44336)
+val ClassInd18 = Color(0xFF000000)
+val ClassIndUnknown = Color(0xFF9E9E9E)
+
+val ClassIndOnLight = Color(0xFFFFFFFF)
+val ClassIndOnDark = Color(0xFF000000)
+
+// ═══════════════════════════════════════════════════════════════════════
+// ACENTO DE CATEGORIA — Séries (Violeta, identidade nova sem equivalente
+// no colorScheme base). Par claro/escuro com contraste verificado (>4.5:1
+// em ambos os sentidos), seguindo a mesma lógica tonal de LightPrimary/DarkPrimary.
+// ═══════════════════════════════════════════════════════════════════════
+
+val SeriesAccentLight = Color(0xFF7C3AED)   // Violeta profundo — contraste em fundo claro
+val SeriesAccentOnLight = Color(0xFFFFFFFF)
+val SeriesAccentDark = Color(0xFFC4B5FD)    // Violeta claro/dessaturado — contraste em fundo escuro
+val SeriesAccentOnDark = Color(0xFF2E1065)
+
+// ═══════════════════════════════════════════════════════════════════════
+// ACENTO DE CATEGORIA — Livros (Terracota, identidade nova sem equivalente
+// no colorScheme base). Par claro/escuro com contraste verificado (>4.5:1
+// em ambos os sentidos), seguindo a mesma lógica tonal de LightPrimary/DarkPrimary.
+// ═══════════════════════════════════════════════════════════════════════
+
+val LivrosAccentLight = Color(0xFF9A3412)  // Terracota profundo — contraste em fundo claro/sépia
+val LivrosAccentOnLight = Color(0xFFFFFFFF)
+val LivrosAccentDark = Color(0xFFFDBA74)   // Terracota clara/pêssego — contraste em fundo escuro
+val LivrosAccentOnDark = Color(0xFF4A1D0A)
+
+// ═══════════════════════════════════════════════════════════════════════
+// LIVROS — Superfícies de papel/sépia (Atmosfera "Aconchego & Biblioteca")
+// ═══════════════════════════════════════════════════════════════════════
+
+val LivrosPaperLight = Color(0xFFFAF6F0)
+val LivrosPaperDark = Color(0xFF1E1A16)
+
+// Prateleira física (VirtualShelf) — madeira e sombra projetada sob o carrossel "Mais Lidos"
+val ShelfWoodLight = Color(0xFFB08968)
+val ShelfWoodDark = Color(0xFF3E2A1F)
+val ShelfShadowLight = Color(0x33000000)
+val ShelfShadowDark = Color(0x66000000)
+
+// Badge de Público-Alvo (Livros) — pastéis semânticos por faixa etária
+val AudienceInfantilLight = Color(0xFFD1E4FF)
+val AudienceInfantilOnLight = Color(0xFF001D36)
+val AudienceInfantilDark = Color(0xFF04364D)
+val AudienceInfantilOnDark = Color(0xFFCFE5FF)
+
+val AudienceJovemLight = Color(0xFFFFDCC7)
+val AudienceJovemOnLight = Color(0xFF7A2E0E)
+val AudienceJovemDark = Color(0xFF5A2410)
+val AudienceJovemOnDark = Color(0xFFFFD6BE)
+
+val AudienceAdultoLight = Color(0xFFE7E4DD)
+val AudienceAdultoOnLight = Color(0xFF3D3929)
+val AudienceAdultoDark = Color(0xFF3A362C)
+val AudienceAdultoOnDark = Color(0xFFE6E1D6)
+
+// ═══════════════════════════════════════════════════════════════════════
+// JOGOS — Badges de marca oficiais do painel "Onde Jogar". Cores fixas por
+// marca (não variam por tema, mesmo tratamento do ClassInd acima) — o acento
+// de categoria de Jogos em si usa `DarkTertiary`/`LightTertiary` já existentes
+// via `MaterialTheme.colorScheme.tertiary` (ver `motor_design.md`, item 1),
+// nunca estas cores de marca.
+// ═══════════════════════════════════════════════════════════════════════
+
+val PlatformPC = Color(0xFF0891B2)             // Ciano petróleo — distinto do DarkTertiary ambiente
+val PlatformPlayStation = Color(0xFF003791)    // Azul Sony oficial
+val PlatformXbox = Color(0xFF107C10)           // Verde Xbox oficial
+val PlatformSwitch = Color(0xFFC4001A)         // Vermelho Switch (aprofundado para contraste com texto branco)
+val PlatformMobile = Color(0xFF4F46E5)         // Índigo genérico (Android + iOS agrupados)
+val PlatformUnknown = Color(0xFF64748B)
+val PlatformBadgeOnColor = Color(0xFFFFFFFF)
