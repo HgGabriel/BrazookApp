@@ -2,7 +2,6 @@ package br.com.example.brazookatelas.ui.components.items
 
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.spring
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -24,15 +23,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.ColorMatrix
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import br.com.example.brazookatelas.R
 import br.com.example.brazookatelas.model.MediaItem
 import br.com.example.brazookatelas.ui.components.RatingBar
+import br.com.example.brazookatelas.ui.components.badges.AgeRatingBadge
 import br.com.example.brazookatelas.ui.theme.OverlayTextPrimary
 import br.com.example.brazookatelas.ui.theme.OverlayTextSecondary
 import br.com.example.brazookatelas.ui.theme.StarGold
@@ -184,52 +181,6 @@ fun BlurryHeaderCard(
                     }
                 }
             }
-        }
-    }
-}
-
-@Composable
-fun AgeRatingBadge(classification: String) {
-    val drawableId = when (classification.trim().uppercase()) {
-        "L" -> R.drawable.idadelivre
-        "10" -> R.drawable.idadedez
-        "12" -> R.drawable.idadedoze
-        "14" -> R.drawable.idadequatorze
-        "16" -> R.drawable.idadedezesseis
-        "18" -> R.drawable.idadedezoito
-        else -> null
-    }
-
-    if (drawableId != null) {
-        Image(
-            painter = painterResource(id = drawableId),
-            contentDescription = "Classificação $classification",
-            modifier = Modifier.size(24.dp)
-        )
-    } else {
-        // Fallback textual limpo e estilizado
-        Box(
-            modifier = Modifier
-                .background(
-                    color = when (classification) {
-                        "L" -> Color(0xFF4CAF50)
-                        "10" -> Color(0xFF03A9F4)
-                        "12" -> Color(0xFFFFEB3B)
-                        "14" -> Color(0xFFFF9800)
-                        "16" -> Color(0xFFF44336)
-                        "18" -> Color.Black
-                        else -> Color.Gray
-                    },
-                    shape = RoundedCornerShape(6.dp)
-                )
-                .padding(horizontal = 6.dp, vertical = 2.dp)
-        ) {
-            Text(
-                text = classification,
-                color = if (classification == "12") Color.Black else Color.White,
-                fontWeight = FontWeight.Bold,
-                fontSize = 11.sp
-            )
         }
     }
 }

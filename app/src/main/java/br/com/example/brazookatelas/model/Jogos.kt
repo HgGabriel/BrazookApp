@@ -23,5 +23,5 @@ data class Jogos(
     override val year: Int get() = ano
     override val classification: String get() = classificacao
     override val subTitle: String get() = estudio
-    override val badgesList: List<String> get() = plataformas.split(",").map { it.trim() }
+    override val badgesList: List<String> get() = GamePlatform.parse(plataformas).map { it.label }
 }
