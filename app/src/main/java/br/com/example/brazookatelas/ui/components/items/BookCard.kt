@@ -1,7 +1,9 @@
 package br.com.example.brazookatelas.ui.components.items
 
+import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.spring
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsPressedAsState
@@ -12,6 +14,8 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -21,6 +25,7 @@ import androidx.compose.ui.unit.dp
 import br.com.example.brazookatelas.R
 import br.com.example.brazookatelas.model.MediaItem
 import br.com.example.brazookatelas.ui.components.RatingBar
+import br.com.example.brazookatelas.ui.components.badges.AudienceBadge
 import br.com.example.brazookatelas.ui.theme.StarGold
 import br.com.example.brazookatelas.ui.components.BrazookImage
 
@@ -30,19 +35,30 @@ fun BookRowItem(
     onClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    // Scale-feedback para simular "pegar o livro da estante"
+    // Física de "puxar o livro da estante": desloca para cima, cresce sutilmente e aprofunda a
+    // sombra projetada — em vez do encolhimento genérico usado nos demais cards de mídia.
     val interactionSource = remember { MutableInteractionSource() }
     val isPressed by interactionSource.collectIsPressedAsState()
     val scale by animateFloatAsState(
-        targetValue = if (isPressed) 0.94f else 1.0f,
+        targetValue = if (isPressed) 1.04f else 1.0f,
         animationSpec = spring(dampingRatio = 0.5f, stiffness = 500f),
         label = "bookRowScale"
+    )
+    val liftOffset by animateDpAsState(
+        targetValue = if (isPressed) (-12).dp else 0.dp,
+        animationSpec = spring(dampingRatio = 0.5f, stiffness = 500f),
+        label = "bookRowLift"
+    )
+    val shadowElevation by animateDpAsState(
+        targetValue = if (isPressed) 10.dp else 4.dp,
+        label = "bookRowShadow"
     )
 
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = modifier
             .width(110.dp)
+            .offset(y = liftOffset)
             .scale(scale)
             .clickable(
                 interactionSource = interactionSource,
@@ -50,24 +66,40 @@ fun BookRowItem(
                 onClick = onClick
             )
     ) {
-        Card(
-            shape = RoundedCornerShape(8.dp),
-            elevation = CardDefaults.cardElevation(
-                defaultElevation = 6.dp,
-                pressedElevation = 2.dp
-            ),
-            colors = CardDefaults.cardColors(
-                containerColor = MaterialTheme.colorScheme.surfaceVariant
-            ),
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(160.dp)
-        ) {
-            BrazookImage(
-                model = item.imageUrl,
-                contentDescription = item.title,
-                contentScale = ContentScale.Crop,
-                modifier = Modifier.fillMaxSize()
+        Box {
+            Surface(
+                shape = RoundedCornerShape(8.dp),
+                shadowElevation = shadowElevation,
+                color = MaterialTheme.colorScheme.surfaceVariant,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(160.dp)
+            ) {
+                Box {
+                    BrazookImage(
+                        model = item.imageUrl,
+                        contentDescription = item.title,
+                        contentScale = ContentScale.Crop,
+                        modifier = Modifier.fillMaxSize()
+                    )
+                    // Lombo sombreado à esquerda, simulando o relevo da encadernação
+                    Box(
+                        modifier = Modifier
+                            .fillMaxHeight()
+                            .width(10.dp)
+                            .background(
+                                Brush.horizontalGradient(
+                                    colors = listOf(Color.Black.copy(alpha = 0.35f), Color.Transparent)
+                                )
+                            )
+                    )
+                }
+            }
+            AudienceBadge(
+                alvo = item.classification,
+                modifier = Modifier
+                    .align(Alignment.TopEnd)
+                    .padding(4.dp)
             )
         }
         Spacer(modifier = Modifier.height(8.dp))
@@ -131,18 +163,25 @@ fun BookListCard(
             verticalAlignment = Alignment.CenterVertically
         ) {
             // Capa (Estilo livro: mais estreito e alto)
-            Surface(
-                shape = RoundedCornerShape(8.dp),
-                shadowElevation = 4.dp,
-                modifier = Modifier
-                    .width(70.dp)
-                    .fillMaxHeight()
-            ) {
-                BrazookImage(
-                    model = item.imageUrl,
-                    contentDescription = item.title,
-                    contentScale = ContentScale.Crop,
+            Box(modifier = Modifier.width(70.dp).fillMaxHeight()) {
+                Surface(
+                    shape = RoundedCornerShape(8.dp),
+                    shadowElevation = 4.dp,
                     modifier = Modifier.fillMaxSize()
+                ) {
+                    BrazookImage(
+                        model = item.imageUrl,
+                        contentDescription = item.title,
+                        contentScale = ContentScale.Crop,
+                        modifier = Modifier.fillMaxSize()
+                    )
+                }
+                AudienceBadge(
+                    alvo = item.classification,
+                    compact = true,
+                    modifier = Modifier
+                        .align(Alignment.TopEnd)
+                        .padding(2.dp)
                 )
             }
 
